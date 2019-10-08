@@ -61,3 +61,10 @@ Las funcionalidades que puede tener este servicio pueden ser:
 - Acceso a una base de datos que permita obtener la información de las matrículas de los alumnos, para así poder obtener información sobre las asignaturas que cursa.
 
 - Mostrar al usuario un calendario definido, por las determinadas asignaturas que el propio usuario esté cursando.
+
+
+## Licencia
+
+
+
+Este proyecto tiene la licencia ***GNU General Public License v3.0*** debido a que es una de las licencias con más permisividad en el ámbito de estudiar, compartir o modificar el software.
