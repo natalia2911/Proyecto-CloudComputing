@@ -27,7 +27,7 @@ Pero lo que en mi proyecto se propone es un
 ***calendario personalizado para los alumnos de la ETSIIT***
 
 
-[Información más detallada sobre el proyecto](https://github.com/natalia2911/Proyecto-CloudComputing/Documentacion/DescripcionProyecto.md)
+[Información más detallada sobre el proyecto](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentacion/DescripcionProyecto.md)
 
 ---
 
