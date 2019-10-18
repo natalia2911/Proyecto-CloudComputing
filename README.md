@@ -31,7 +31,7 @@ El lenguaje que vamos a usar va a ser Ruby, aunque la intención principal es de
 Por otro lado hemos comentado que necesitaremos el acceso a una base de datos, para obtener la información del alumno, aun no hemos concretado cuál será pero optamos por una base de datos no relacional, debido a que los datos están optimizados y se logra una gran accesibilidad en el tratamiento de los mismos, por lo que una de las posibles candidatas podría ser **MongoDB**.
 
 La comunicación entre los microservicios se va a realizar mediante paso de mensajes, para ello tendremos que implementar un sistema broker como por ejemplo **RabbitMQ**
-RabbitMQ es el intermediario de mensajes de código abierto más usado. Lo hemos elegido ya que es uno de los más ligeros y fáciles de implementar con microservicios en la nube, tiene un implementación distribuida y utiliza mensajería asíncrona.
+- RabbitMQ es el intermediario de mensajes de código abierto más usado. Lo hemos elegido ya que es uno de los más ligeros y fáciles de implementar con microservicios en la nube, tiene un implementación distribuida y utiliza mensajería asíncrona.
 
 [Más información sobre RabbitMQ](https://www.rabbitmq.com/)
 
