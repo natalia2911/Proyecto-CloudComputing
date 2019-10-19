@@ -12,5 +12,3 @@ Por otro lado encontramos un tercer microservicio en el cual se encargará de en
 Este proyecto surge como solución al problema que a muchos alumnos se les presenta durante el grado o postgrado, que es que tienen asignaturas de otros cursos y diferentes clases con diferentes profesores, y realizar un horario claro y conciso puede resultar una tarea algo tediosa.
 
 Por otro lado puede haber conflictos del tipo: que dos clases pueden coincidir o algo mas grave aun, que dos exámenes puedan coincidir.
-
-En un futuro nuestra proyecto puede ser capaz de notificar al usuario mediante un mensaje diciéndole que hay un conflicto, para que el alumno en cuestión se ponga en contacto con el profesor o cualquier órgano administrativo para poner fin a este conflicto.
