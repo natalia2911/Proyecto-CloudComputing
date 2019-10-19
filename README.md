@@ -8,9 +8,9 @@ Este es el repositorio relacionado con el proyecto realizado por Natalia María 
 
 ## Descripción del proyecto
 
-Mi proyecto va a basarse en una serie de microservicios en la nube en los que aparezcan un microservicio encargado de la gestión de los exámenes que puede tener un alumno matriculado, otro microservicio que gestione los alumnos, y otro que se encargue de mandarle mensajes al alumno.
+Mi proyecto va a basarse en una serie de microservicios en la nube en los que aparecerá un microservicio encargado de la gestión de los exámenes que puede tener un alumno matriculado, otro microservicio que gestione los alumnos, y otro que se encargue de mandarle mensajes al alumno.
 
-Estos microservicios están pensados para incluirse en un ***calendario personalizado para los alumnos de la ETSIIT***
+Estos microservicios están pensados para incluirse dentro de un ***calendario personalizado para los alumnos de la ETSIIT***
 
 [Información más detallada sobre el proyecto](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentación/DescripcionProyecto.md)
 
@@ -32,6 +32,8 @@ Por otro lado hemos comentado que necesitaremos el acceso a una base de datos, p
 
 La comunicación entre los microservicios se va a realizar mediante paso de mensajes, para ello tendremos que implementar un sistema broker como por ejemplo **RabbitMQ**
 - RabbitMQ es el intermediario de mensajes de código abierto más usado. Lo hemos elegido ya que es uno de los más ligeros y fáciles de implementar con microservicios en la nube, tiene un implementación distribuida y utiliza mensajería asíncrona.
+
+Dentro de la parte de integración continua, hemos pensado que la forma más sencilla de llevarla acabo es mediante la implementación de test con **Travis-CI**
 
 [Más información sobre RabbitMQ](https://www.rabbitmq.com/)
 

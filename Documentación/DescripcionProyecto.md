@@ -1,10 +1,13 @@
 ## Calendario personalizado para los alumnos de la ETSIIT
 
-Nuestro proyecto será capaz de proporcionar a los alumnos información mediante un calendario personalizado tanto de clases como de exámenes.
+Nuestro proyecto será capaz de proporcionar a los alumnos información mediante un calendario personalizado tanto de clases como de exámenes, debido al paso de mensajes que se genere desde los diferentes microservicios hasta la interfaz de usuario.
 
-Dependiendo de las asignaturas que tengan matriculadas este curso, nuestro proyecto será capaz de generar un calendario con las clases que este alumno tenga, así como un calendario de exámenes, donde puede ver exactamente los días que tiene el examen y en qué clases.
+Nuestra intención es que el microservicio encargado de la gestión de exámenes pueda acceder a su base de datos en el que podrá hacer consultas sobre la lista de exámenes que aparecen asociadas a las diferentes asignaturas de los determinados cursos.
+Por otro lado el segundo microservicio, el encargado de la gestión de los alumnos será capaz de acceder a la segunda base de datos en la cual aparecerá descrito los diferentes alumnos, asociadas a las asignaturas que tengan matriculadas.
 
-De esta manera facilitaremos al alumno el trabajo de saber en cada momento donde tiene clase o que clases tiene en un día, así como los exámenes.
+Destacamos que el microservicio de gestión de exámenes y el microservicio de gestión de alumnos podrán comunicarse entre sí, aunque se encuentren como microservicios completamente separados.
+
+Por otro lado encontramos un tercer microservicio en el cual se encargará de enviar mensajes, y se podrá comunicar con el microservicio de gestión de alumnos.
 
 Este proyecto surge como solución al problema que a muchos alumnos se les presenta durante el grado o postgrado, que es que tienen asignaturas de otros cursos y diferentes clases con diferentes profesores, y realizar un horario claro y conciso puede resultar una tarea algo tediosa.
 
