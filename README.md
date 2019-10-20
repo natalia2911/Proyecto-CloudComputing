@@ -8,7 +8,7 @@ Este es el repositorio relacionado con el proyecto realizado por Natalia María 
 
 ## Descripción del proyecto
 
-Mi proyecto va a basarse en una serie de microservicios en la nube en los que aparecerá un microservicio encargado de la gestión de los exámenes que puede tener un alumno matriculado, otro microservicio que gestione los alumnos, y otro que se encargue de mandarle mensajes al alumno.
+Mi proyecto va a basarse en una serie de microservicios en la nube en los que aparecerá un microservicio encargado de la gestión de los exámenes que puede tener un alumno matriculado, otro microservicio que gestione los alumnos, y otro que se encargue de mandar mensajes.
 
 Estos microservicios están pensados para incluirse dentro de un ***calendario personalizado para los alumnos de la ETSIIT***
 
