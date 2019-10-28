@@ -26,7 +26,7 @@ Los microservicios que vamos a desarrollar son:
 
 - `Gestión de alumnos`: accederán a la base de datos de los alumnos, y consultará los alumnos que están matriculados en una asignatura, pudiendo borrarse de ella, matricularse en otras.
 
-- `Envío de mensajes`: se encargará de enviar mensajes 
+- `Envío de mensajes`: se encargará de enviar mensajes.
 
 ### Diagrama de la arquitectura
 
