@@ -52,19 +52,21 @@ Seleccionaremos **MongoDB** debido a que es una base de datos la cual es especí
 
 **RabbitMQ** es el intermediario de mensajes de código abierto más usado. Lo hemos elegido ya que es uno de los más ligeros y fáciles de implementar con microservicios en la nube, tiene un implementación distribuida y utiliza mensajería asíncrona. Lo hemos elegido debido a que es fácil de usar, soporta muchas plataformas de desarrollo, y puede recopilar varios servidores en un broker lógico.
 
-- `API Gateway`: uno de los servicios que utilizaremos en nuestra aplicación será una API Gateway, la usaremos debido a que esta actuará de enrutador desde la entrada hacia los microservicios. Para ello hemos estado deliberando entre si usar traefik, kong, pero en definitiva nos hemos decantado por **[AWS Lambda](https://www.paradigmadigital.com/dev/aws-lambda-arquitectura-serverless-implementar-apis/)** 
+- `API Gateway`: uno de los servicios que utilizaremos en nuestra aplicación será una API Gateway, la usaremos debido a que esta actuará de enrutador desde la entrada hacia los microservicios. 
 
-Lo hemos elegido debido a su funcionalidad, ya que ejecuta el código desarrollado en distintos eventos, es decir que cuando ocurra el evento le indicaremos el código que tendrá que ejecutar.
+Para ello hemos estado deliberando entre si usar traefik, kong, pero en definitiva nos hemos decantado por **[KONG GATEWAY](https://konghq.com/kong/)** 
+
+Lo hemos elegido debido a su funcionalidad, también por que esta apoyado en el servido HTTP Nginx, y debido a esto ofrece un alto rendimiento. También tenemos en cuenta que es open source.
+
 
 - `API Rest` : Cada servicio incluirá una API Rest y implementarla utilizaremos el microframework **Flask** 
 
 He decidido usar **Flask** ya que permite crear de forma sencilla una API REST, incluye un servidor web de desarrollo y tiene depurador y soporte integrado para pruebas unitarias, ademśa en compatible con Python 3.
 
-- `Integración continua`: Dentro de la parte de integración continua, hemos pensado que la forma más sencilla de llevarla a cabo es mediante la implementación de test con **Travis-CI**
+- `Integración continua`: Dentro de la parte de integración continua, hemos pensado que la forma más sencilla de llevarla a cabo es mediante la implementación de test con **pytest** y **invoke** como herramienta de ejecución de tareas.
 
 
-- `Sistema de logging`: para gestionar los logs utilizaremos **[Kibana](https://www.elastic.co/es/products/kibana)** 
-
+- `Sistema de logging`: para gestionar los logs utilizaremos una libreria propia de python, llamada **logging** que nos permitirá rastrear un evento dentro de un software. Por ejemplo, registrar un mensaje de error.
 
 ## Historias de usuario
 
