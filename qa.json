@@ -1,0 +1,4 @@
+{
+    "lenguaje": "Python",
+    "build": "tasks.py"  
+  }
