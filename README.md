@@ -51,6 +51,8 @@ Los microservicios que vamos a desarrollar son:
 - `Sistema de logging`:  libreria propia de python, llamada **logging**
 
 
+![logosArquitecturas](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/arquitectura.png)
+
 [La justificación de la arquitectura](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentación/arquitectura_descrip.md)
 
 ## Historias de usuario
