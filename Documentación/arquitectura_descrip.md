@@ -35,3 +35,4 @@ Por otro lado decidimos usar la librería **SQLALCHEMY** ya que nos permite crea
 
 - `Sistema de logging`: para gestionar los logs utilizaremos una libreria propia de python, llamada **logging** que nos permitirá rastrear un evento dentro de un software. Por ejemplo, registrar un mensaje de error.
 
+![logosArquitecturas](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/arquitectura.png)
