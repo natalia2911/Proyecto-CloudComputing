@@ -16,6 +16,7 @@ class Exams:
     def info_error_exams(self,exam1,exam2):
         if exam1.date == exam2.date:
             raise ValueError("Los examenes se solapan")
+        
     def push_exam(self):
         pass
 
