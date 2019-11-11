@@ -1,5 +1,10 @@
-from invoke import task
+from invoke import task,run
 
 @task
+def build(n):
+    n.run("pip install -r requirements.txt")
+@task
 def test(n):
-    n.run("pytest -q tests/test_examns.py")
+    with n.cd('tests/'):
+        n.run("pytest --cov=./")
+
