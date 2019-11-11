@@ -5,7 +5,11 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip install codecov
 
 script:
    - invoke test
    - pytest --cov=./
+  
+after_success:
+  - codecov
