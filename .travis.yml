@@ -8,5 +8,4 @@ install:
 
 script:
    - invoke test
-   - invoke codecov
    - pytest --cov=./
