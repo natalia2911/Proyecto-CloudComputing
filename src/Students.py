@@ -1,6 +1,8 @@
 from SubjectList import SubjectList
 from EnrolledStudentsList import EnrolledStudentsList
 
+subjects_list = SubjectList()
+
 class Students:
     def __init__(self, name, dni, course, enrolledstudents_list):
        self.name = name
@@ -12,16 +14,18 @@ class Students:
            raise ValueError("Este alumno no esta matriculado")
 
     def get_info_student(self):
-        msg = self.name + "\n\n"  + "DNI: " + self.dni + "\n\n" + "Curso: " + self.course + "\n\n"
+        msg = "Alumno: " + self.name + "\n\n"  + "DNI: " + self.dni + "\n\n" + "Curso: " + self.course + "\n\n"
         return msg
 
-
+    def get_info_subjects(self):
+        msg = "Alumno:" + self.name + "\n\n"  + "DNI: " + self.dni + + "\n\n" + "Lista de asignaturas: "  
+        n = len(subjects_list.subjects)
+        for i in range(n):
+            msg += subjects_list.subjects[i] + " "
+            return msg
+        
+    def push_subject(self, subject):
+        pass
   
-if __name__ == "__main__":
-    failed_student = "Pedro"
-    dni = "15520052"
-    course = "Primero"
-    enrolledstudents_list = EnrolledStudentsList()
-    student = Students(failed_student, dni, course, enrolledstudents_list)
-    msg = student.get_info_student()
-    print(msg)
+
+
