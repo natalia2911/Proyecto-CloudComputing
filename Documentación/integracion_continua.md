@@ -76,7 +76,7 @@ La línea que introducimos antes de poner la instalación de dependencias o la e
 
 La añadimos debido a que estamos trabajando con entornos virtuales `virtualenv` de python3, y sin ella no arrancaría la función run.
 
-Ejemplo de funcionamiento de **Circle-CI**  ![FuncionamientoCircle](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/circleci.png
+Ejemplo de funcionamiento de **Circle-CI**  ![FuncionamientoCircle](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/circleci.png)
 
 # Test
 
@@ -99,4 +99,4 @@ Hemos incluido como parte adicional unos test de cobertura, para que nos indique
 
 Lo hacemos con **codecov**
 
-Ejemplo de funcionamiento de **codecov**  ![FuncionamientoCodecov](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/codecov.png
+Ejemplo de funcionamiento de **codecov**  ![FuncionamientoCodecov](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/codecov.png)
