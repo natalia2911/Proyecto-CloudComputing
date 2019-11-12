@@ -79,7 +79,7 @@ Para la implementación de la integración continua utilizaremos dos servicios d
 
 - **Travis-CI**: lo usamos para testear los microservicios descritos con anterioridad de forma sencilla, ya que este sistema nos permite conectar nuestro repositorio y con cada modificación que hagamos nos ejecute los test realizados, de tal forma que nos evitemos que se introduzcan errores no deseados y todo este completamente testeado en todo momento. Destacamos que estamos desarrollando nuestro proyecto en la versión *3.6.8*
 
-- **Circle-CI**: 
+- **Circle-CI**: usamos circle-ci como alternativa de sistema de integración continua, debido a su facilidad de uso, para ello tenemos el archivo de configuración [**.circleci/config.yml**](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/.circleci/config.yml)
 
 Por otro lado como **herramienta de construcción** usaremos *Invoke* por lo que:
 
