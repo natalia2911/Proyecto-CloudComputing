@@ -1,10 +1,17 @@
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+[![Build Status](https://travis-ci.com/natalia2911/Proyecto-CloudComputing.svg?branch=master)](https://travis-ci.com/natalia2911/Proyecto-CloudComputing)
+[![codecov](https://codecov.io/gh/natalia2911/Proyecto-CloudComputingbranch/master/graph/badge.svg)](https://codecov.io/gh/natalia2911/Proyecto-CloudComputing)
+[![CircleCI](https://circleci.com/gh/natalia2911/Proyecto-CloudComputing.svg?style=svg)](https://circleci.com/gh/natalia2911/Proyecto-CloudComputing)
 # Proyecto Cloud Computing
 
 
 Este es el repositorio relacionado con el proyecto realizado por Natalia María Mártir Moreno sobre la asignatura de Cloud Computing del Máster de Ingeniería Informática de Granada.
 
+## Prerequisitos
 
+- **Versión**: Python 3.6.9
+- **Dependecias**: pip install -r requirements.tx
+- **Ejecución tests**: invoke test
 
 ## Descripción del proyecto
 --- 
@@ -34,7 +41,7 @@ Los microservicios que vamos a desarrollar son:
 
 --- 
 
-- `Lenguaje `: **Python** .
+- `Lenguaje `: **Python** con herramienta de entorno virutal **virtualenv**.
 
 - `Framework`:  **Django** 
 
@@ -64,7 +71,28 @@ Hemos definido las historias de usuario como milestones, en cada cúal contiene 
 - [Funcionalidad del microservicio Gestión de exámenes](https://github.com/natalia2911/Proyecto-CloudComputing/milestone/5)
 
 
+
+
 ## Integración continua
+
+Para la implementación de la integración continua utilizaremos dos servicios diferentes.
+
+- **Travis-CI**: lo usamos para testear los microservicios descritos con anterioridad de forma sencilla, ya que este sistema nos permite conectar nuestro repositorio y con cada modificación que hagamos nos ejecute los test realizados, de tal forma que nos evitemos que se introduzcan errores no deseados y todo este completamente testeado en todo momento. Destacamos que estamos desarrollando nuestro proyecto en la versión *3.6.8*
+
+- **Circle-CI**: 
+
+Por otro lado como **herramienta de construcción** usaremos *Invoke* por lo que:
+
+- Tendremos que instalar los *requirements.txt* 
+- Para la ejecución de los test usaremos *pytest*
+- Usaremos test de cobertura gestionados por *codecov*
+
+
+buildtool: tasks.py
+
+[Documentación adicional integración continua](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/integracion_continua.md)
+
+
 
 ## Licencia
 ---
