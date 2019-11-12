@@ -1,15 +1,22 @@
+# Lenguaje utilizado
 language: python
 
+# Para que nos ejecute los test de python en la versión correcta,
+# aquí también podríamos probar con otras versiones.
 python:
   - "3.6.8"
 
+# Instalamos las dependecias
+# Para la parte de los test de cobertura, instalamos codecov
 install:
   - pip install -r requirements.txt
   - pip install codecov
 
+# Ejecutamos los test con la herramienta de construcción
 script:
    - invoke test
    - pytest --cov=./
-  
+
+#Pasamos los resultados del test a codecov.
 after_success:
   - codecov
