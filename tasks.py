@@ -14,3 +14,9 @@ def test(n):
     with n.cd('tests/'):
         n.run("pytest --cov=./")
 
+
+# Tarea para ejecutar los test de cobertura
+@task
+def codecov(n):
+    with n.cd('tests/'):
+        n.run("codecov")

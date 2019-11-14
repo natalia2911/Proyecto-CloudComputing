@@ -15,7 +15,7 @@ install:
 # Ejecutamos los test con la herramienta de construcción
 script:
    - invoke test
-   - pytest --cov=./
+   - invoke codecov
 
 #Pasamos los resultados del test a codecov.
 after_success:
