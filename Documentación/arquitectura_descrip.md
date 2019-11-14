@@ -1,5 +1,10 @@
 # Descripción de la arquitectura
 
+### Diagrama de la arquitectura
+
+![diagramaArquitectura](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/diagrama.png)
+
+
 Vamos a explicar la arquitectura que vamos a usar, y el por que hemos decidio usarla.
 
 - `Lenguajes`: Al principio había decidido implementar cada servicio en un lenguaje diferente, pero por facilidad más tarde en la integración continua, he decidido implementar los microservicios en el mismo lenguaje **Python** .
