@@ -22,6 +22,7 @@ jobs:
             . venv/bin/activate
             invoke test
 
+            
 # La añadimos debido a que estamos trabajando con 
 # entornos virtuales `virtualenv` de python3, y 
 # sin ella no arrancaría la función run.
