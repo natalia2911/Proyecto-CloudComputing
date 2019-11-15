@@ -61,18 +61,24 @@ Para la implementación de la integración continua utilizaremos dos servicios d
 - **Travis-CI**: lo usamos para testear los microservicios descritos con anterioridad de forma sencilla, ya que este sistema nos permite conectar nuestro repositorio y con cada modificación que hagamos nos ejecute los test realizados, de tal forma que nos evitemos que se introduzcan errores no deseados y todo este completamente testeado en todo momento. Destacamos que estamos desarrollando nuestro proyecto en la versión **3.6.8** debido a que es la versión que usamos en local para el desarrollo, pero también probaremos con la versión *3.7* (Versión estable de python) y la *3.8*(Versión en desarrollo), todo sobre el sistema operativo Linux (Ubuntu 18)
 
 - **Circle-CI**: usamos circle-ci como alternativa de sistema de integración continua, debido a su facilidad de uso, para ello tenemos el archivo de configuración [**.circleci/config.yml**](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/.circleci/config.yml)
-    - En el usamos la versión 3.5, que es la mínima versión en la que funcionarán los microservicios. 
+    - En el usamos la versión 3.6.8, que es la versión con la que estamos desarrollando el proyecto en local. 
+
+`Tenemos que destacar que parainstalar y testar las clases deberemos instalar las dependecias mediante los requirements.txt (pip install -r requirements.txt)`
 
 Por otro lado como **herramienta de construcción** usaremos *[tasks.py](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/tasks.py)* de *Invoke*.
+
 - Esta herramientas es usada para que todas las tareas se ejecuten de forma automática.
+
 - Las diferentes tareas que ejecuta son:
     - La tarea **build** para instalar las dependencias.
     - La tarea **test** para que ejecute los test.
     - La tarea **codecov** para que envie los resultados al test de cobertura.
 
+Tenemos que destacar que **Invoke** no será una dependencia de nuestro proyecto ya que lo usaremos como herramienta de construcción. 
+
 buildtool: tasks.py
 
-[Documentación adicional integración continua](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/integracion_continua.md)
+[Documentación adicional integración continua, explicación de la configuración](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/integracion_continua.md)
 
 
 

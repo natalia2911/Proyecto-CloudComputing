@@ -4,6 +4,41 @@ Para incluir la integración continua dentro de nuestro proyecto, como hemos com
 
 Para la puesta en marcha de cualquiera de los dos necesitamos código al cual le podamos pasar test, y los propios test.
 
+## Herramienta de construcción
+
+Pero antes vamos a describir la herramienta de constucción utilizada que en este caso es [**tasks.py**](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/tasks.py)
+
+```
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from invoke import task,run
+
+# Tarea que nos instala dependencias
+@task
+def build(n):
+    n.run("pip install -r requirements.txt")
+
+# Tarea que ejecuta los test
+@task
+def test(n):
+    with n.cd('tests/'):
+        n.run("pytest --cov=./")
+
+
+# Tarea para ejecutar los test de cobertura
+@task
+def codecov(n):
+    with n.cd('tests/'):
+        n.run("codecov")
+``` 
+
+Definimos tareas mediante **@task**  y definimos 3 tareas:
+  - build: lo usamos para instalar las dependecias.
+  - test: para ejecutar los test.
+  - codecov: para mandar los resultados de los test a los test de cobertura.
+
+
 ## Para el caso de **Travis-CI**:
 
 - Abrimos la página de [Travis-CI](https://travis-ci.com/) y vinculamos nuestro proyecto de Github para que pasen los test.
@@ -52,16 +87,20 @@ version: 2
 jobs:
   build:
     docker:
+      # Especificamos la versión de lenguaje que vamos a utilizar, en este caso 
+      # será 3.6.8 que es la que estamos utilizando para el desarrollo.
       - image: circleci/python:3.6.8
     steps:
       - checkout
       - run:
+          # Instala las dependecias
           name: Dependencias
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
       - run:
+          # Orden que hace correr los test.
           name: Test
           command: |
             python3 -m venv venv
@@ -75,6 +114,13 @@ La línea que introducimos antes de poner la instalación de dependencias o la e
             . venv/bin/activate`
 
 La añadimos debido a que estamos trabajando con entornos virtuales `virtualenv` de python3, y sin ella no arrancaría la función run.
+
+En el archivo de configuración de **Circle-ci** podemos ver:
+- **jobs**: especificamos cada uno de las tareas que se van a realizar.
+- **build**: especificaremos en este caso la imagen docker que vamos a usar, en este caso especificaremos el lenguaje y la versión del mismo que estamos usando en el proyecto.
+- **steps**: podemos ver que dentro se encuentran las tareas, en este caso tenemos 3, la de verificar el codigo mediante el *checkout*, y en las otras dos, instalamos las dependecias, y ejecutamos los test, pero antes de ello creamos el entorno virtual para ejecutarlo.
+
+
 
 Ejemplo de funcionamiento de **Circle-CI**  ![FuncionamientoCircle](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/circleci.png)
 
