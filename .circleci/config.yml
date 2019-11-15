@@ -2,18 +2,26 @@ version: 2
 jobs:
   build:
     docker:
+      # Especificamos la versión de lenguaje que vamos a utilizar, en este caso 
+      # será 3.6.8 que es la que estamos utilizando para el desarrollo.
       - image: circleci/python:3.6.8
     steps:
       - checkout
       - run:
+          # Instala las dependecias
           name: Dependencias
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
       - run:
+          # Orden que hace correr los test.
           name: Test
           command: |
             python3 -m venv venv
             . venv/bin/activate
             invoke test
+
+# La añadimos debido a que estamos trabajando con 
+# entornos virtuales `virtualenv` de python3, y 
+# sin ella no arrancaría la función run.
