@@ -2,6 +2,8 @@ from SubjectList import SubjectList
 from EnrolledStudentsList import EnrolledStudentsList
 
 subjects_list = SubjectList()
+enrolledstudents_list = EnrolledStudentsList()
+
 
 class Students:
     def __init__(self, name, dni, course, enrolledstudents_list):
@@ -18,14 +20,24 @@ class Students:
         return msg
 
     def get_info_subjects(self):
-        msg = "Alumno:" + self.name + "\n\n"  + "DNI: " + self.dni + + "\n\n" + "Lista de asignaturas: "  
+        msg = "Alumno:" + self.name + "\n\n"  + "DNI: " + self.dni  + "\n\n" + "Lista de asignaturas: "  
         n = len(subjects_list.subjects)
         for i in range(n):
             msg += subjects_list.subjects[i] + " "
-            return msg
-        
+        return msg
+
+    def get_info_subject(self):
+        msg = "Alumno:" + self.name + "\n\n"  + "DNI: " + self.dni + "\n\n" + "Curso: " + self.course + "\n\n" + "Lista de asignaturas: "  
+        n = len(enrolledstudents_list.asignaturas)
+        for i in range(n):
+            if(self.name == enrolledstudents_list.name[i]):
+                msg += enrolledstudents_list.asignaturas[i]
+        return msg
+
     def push_subject(self, subject):
         pass
   
+
+    
 
 

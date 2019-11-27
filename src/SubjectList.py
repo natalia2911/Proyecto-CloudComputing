@@ -4,5 +4,11 @@ class SubjectList:
             "CAL",
             "IV",
             "IA",
-            "SCD"
+            "SCD",
+            "TID",
+            "CC",
+            "PDOO",
+            "ALG",
+            "FIS",
+            "TDD",   
         ]
