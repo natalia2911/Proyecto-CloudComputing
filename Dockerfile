@@ -14,8 +14,8 @@ COPY . ./
 #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor, tendríamos la opción de usar
 # requirements, pero podemos "RUN pip install --no-cache-dir -r requirements.txt" pero instalaria cosas que no son necesarias,
 # por lo que solo instalaremos pip, y gunicorn --> Indicaremos que no se use la caché.
-RUN pip install --upgrade pip && pip install --no-cache-dir -r gunicorn 
-
+#RUN pip install --upgrade pip && pip install --no-cache-dir -r gunicorn 
+RUN pip install --no-cache-dir -r requirements.txt
 #Definimos el puerto donde el contenedor va a escuchar
 EXPOSE 80
 
