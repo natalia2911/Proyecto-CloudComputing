@@ -8,7 +8,7 @@ from SubjectList import SubjectList
 from EnrolledStudentsList import EnrolledStudentsList
 
 result = "Alumno: Natalia\n\nDNI: 15520052C\n\nCurso: Primero\n\n"
-result2= "Alumno: Natalia\n\nDNI: 15520052C\n\nLista de asignaturas: CAL IV IA SCD"
+result2= "Alumno: Natalia\n\nDNI: 15520052C\n\nLista de asignaturas: CAL IV IA SCD TID CC PDOO ALG FIS TDD"
 
 enrolledstudents_list = EnrolledStudentsList()
 subject_list = SubjectList()
