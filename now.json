@@ -1,4 +1,12 @@
-{	
-	"version": 2,
-		
-}
+{
+	"version": 2, 
+	"name": "Student Rest",
+	"builds": [
+	  {
+		"src": "tasks.py",
+		"config": {
+		  "distDir": "public" 
+		}
+	  }
+	]
+  }
