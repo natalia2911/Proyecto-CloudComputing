@@ -16,6 +16,14 @@ def inicio():
 def status():
 	return jsonify(status="OK")
 
+@app.route('/student/', methods = ['GET'])
+def InicioStudent():
+	return jsonify(status="Estamos dentro de la información de los alumnos")
+
+@app.route('/student/subject/',  methods = ['GET'])
+def InicioAsignaturas():
+	return jsonify(status="Estamos dentro de la información de las asignaturas")
+
 @app.route('/student/<student>/<dni>/<curso>', methods = ['GET'])
 def InfoStudent(student,dni,curso):
     estudiante = Students(student, dni, curso, enrolledstudents_list)
