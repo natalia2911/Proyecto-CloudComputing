@@ -31,8 +31,3 @@ wcwidth==0.1.7
 Werkzeug==0.16.0
 zipp==0.6.0
 gunicorn 
-Flask
-itsdangerous
-Jinja2==2.10
-MarkupSafe==1.0
-Werkzeug==0.14.1
