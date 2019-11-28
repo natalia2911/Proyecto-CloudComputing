@@ -4,6 +4,7 @@
 	"builds": [
 	  {
 		"src": "tasks.py",
+		"use": "@now/static-build",
 		"config": {
 		  "distDir": "public" 
 		}
