@@ -80,8 +80,35 @@ buildtool: tasks.py
 
 [Documentación adicional integración continua, explicación de la configuración](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/integracion_continua.md)
 
-## Uso de contenedores
+## Arquitectura por capas
 
+Hemos decidido implementar uno de los microservicios descritos, en este caso el de **Gestión de Alumnos**
+Tenemos una arquitectura por capas, ya que la hemos definido de esta forma:
+- **Capa inferior**: donde tenemos la clase **Students.py** con su correspondiente test unitario **test_students.py** 
+- **Capa superior**: donde tenemos la API REST del microservicio de gestión de alumnos en el fichero **students-rest.py** con su test de cobertura **test_students_rest.py**
+
+# Uso de contenedores
+
+Contenedor: https://hub.docker.com/r/natalia2911/proyecto-cloudcomputing
+
+Hemos creado la imagen de nuestro contenedor apartir del [Dockerfile](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Dockerfile)
+
+Como podemos ver, la imagen la hemos creado en [DockerHub](https://hub.docker.com/) 
+
+Como parte adicional también hemos creado una imagen de nuestro contenedor en [Zeit](https://zeit.co/dashboard)
+
+Imagen del contenedor de Zeit: https://proyecto-cloudcomputing.nataliamartir.now.sh/
+
+[Documentación adiccional Zeit]()
+[Documentación adiccional Docker]()
+
+## Depliegue de un PaaS
+
+Para que nuestro servicio comience a funcionar, hemos elegido para desplegar nuestra aplicación Heroku.
+
+He elegido esta plataforma debido a que: es gratis, permite tanto la integración con github, como con travis, y sobre todo por que es fácil de usar.
+
+El despliege de la aplicación esta en esta url: https://students-rest.herokuapp.com/
 
 ## Licencia
 ---
