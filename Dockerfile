@@ -8,16 +8,20 @@ LABEL NataliaMartir <nataliamartir@correo.ugr.es>
 # Establecemos con la etiqueta WORKDIR cual va a ser el directorio de trabajo
 WORKDIR /src/
 
-# Copiamos en la imagen los archivos que son necesarios nuestra api rest, este caso son:
+# Copiamos en la imagen todos los archivos necesarios para usar nuestra api rest.
 COPY . ./
 
-#Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor, tendríamos la opción de usar
-# requirements, pero podemos "RUN pip install --no-cache-dir -r requirements.txt" pero instalaria cosas que no son necesarias,
-# por lo que solo instalaremos pip, y gunicorn --> Indicaremos que no se use la caché.
+#Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor podríamos solo instalar gunicorn y actualizar pip, pero por funcionalidad 
+# preferimos que nuestro contenedor instale todos los requirements.
 #RUN pip install --upgrade pip && pip install --no-cache-dir -r gunicorn 
 RUN pip install --no-cache-dir -r requirements.txt
+
 #Definimos el puerto donde el contenedor va a escuchar
+#Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
+# Fuente: https://lemoncode.net/lemoncode-blog/2019/11/5/hola-docker
 EXPOSE 80
 
-#Ejecutamos gunicorn
+#Ejecutamos gunicorn:
+# Para acceder a la api rest, tendremos que introducirnos en la carpeta src.
+# Usamos --bind para especificar el socket donde va a escuchar, en este caso en el localhost, en el puerto 80.
 CMD cd src && gunicorn students-rest:app --bind 0.0.0.0:80
