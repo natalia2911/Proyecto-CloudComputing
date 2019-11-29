@@ -15,7 +15,7 @@ run:
 ```
 
 * `git add heroku.yml` Hacemos un commit
-* Indicamos a Heroku, que nuestra app es un contenedor. `heroku stack:set container -a students-rest
+* Indicamos a Heroku, que nuestra app es un contenedor. `heroku stack:set container -a students-rest`
 * Y hacemos el push `git push heroku master`
 
 Dentro de la página de Heroku, linkeamos con nuestro Github, e indicamos nuestro repositorio.

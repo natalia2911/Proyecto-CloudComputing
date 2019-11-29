@@ -99,7 +99,7 @@ Como parte adicional también hemos creado una imagen de nuestro contenedor en [
 
 Imagen del contenedor de Zeit: https://proyecto-cloudcomputing.nataliamartir.now.sh/
 
-[Documentación adiccional Zeit]()
+[Documentación adiccional Zeit](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/doc-zeit.md)
 [Documentación adiccional Docker]()
 
 ## Depliegue de un PaaS
@@ -110,6 +110,7 @@ He elegido esta plataforma debido a que: es gratis, permite tanto la integració
 
 El despliege de la aplicación esta en esta url: https://students-rest.herokuapp.com/
 
+[Documentación Heroku](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/doc-heroku.md)
 ## Licencia
 ---
 Este proyecto tiene la licencia ***GNU General Public License v3.0*** debido a que es una de las licencias con más permisividad en el ámbito de estudiar, compartir o modificar el software.
