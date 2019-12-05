@@ -38,14 +38,11 @@ Usamos docker ya que nos sirve para crear contenedores de forma ligera, y portab
     WORKDIR /src/
 
     # Copiamos en la imagen todos los archivos necesarios para usar nuestra api rest.
-    COPY src/ src/ ./
+    COPY src/ src/ requirements.txt ./
 
     #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
 
-    RUN apk add py3-setuptools \
-        && pip install --no-cache-dir --upgrade pip \ 
-        && pip install --no-cache-dir gunicorn
-
+    RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
     #Definimos el puerto donde el contenedor va a escuchar
     #Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
@@ -53,9 +50,9 @@ Usamos docker ya que nos sirve para crear contenedores de forma ligera, y portab
     EXPOSE 80
 
     #Ejecutamos gunicorn:
-    # Para acceder a la api rest, tendremos que introducirnos en la carpeta src.
+    # Para acceder a la api rest, tendremos que introducirnos en la carpeta src.    
     # Usamos --bind para especificar el socket donde va a escuchar, en este caso en el localhost, en el puerto 80.
-    CMD cd src && gunicorn students-rest:app --bind 0.0.0.0:80``` 
+    CMD gunicorn students-rest:app --bind 0.0.0.0:80``` 
 
 
 Vamos a explicar cada uno de los elementos usados:
