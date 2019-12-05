@@ -15,7 +15,8 @@ COPY src/ src/ ./
 
 RUN apk add py3-setuptools \
     && pip install --no-cache-dir --upgrade pip \ 
-    && pip install --no-cache-dir gunicorn
+    && pip install --no-cache-dir gunicorn \
+    && pip install --no-cache-dir Flask
 
 #Definimos el puerto donde el contenedor va a escuchar
 #Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
