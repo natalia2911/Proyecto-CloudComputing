@@ -13,7 +13,7 @@ COPY src/ src/ ./
 
 #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
 
-RUN sudo apt-get install python-pip \
+RUN apt-get install python-pip \
     && pip install --no-cache-dir --upgrade pip \ 
     && pip install --no-cache-dir -r gunicorn
 
