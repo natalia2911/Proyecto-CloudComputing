@@ -6,7 +6,7 @@ FROM python:3.6.8-alpine
 LABEL NataliaMartir <nataliamartir@correo.ugr.es>
 
 # Establecemos con la etiqueta WORKDIR cual va a ser el directorio de trabajo
-WORKDIR /src/
+WORKDIR src/
 
 # Copiamos en la imagen todos los archivos necesarios para usar nuestra api rest.
 COPY src/ src/ requirements.txt ./
