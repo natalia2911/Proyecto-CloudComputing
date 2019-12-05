@@ -9,12 +9,13 @@ LABEL NataliaMartir <nataliamartir@correo.ugr.es>
 WORKDIR /src/
 
 # Copiamos en la imagen todos los archivos necesarios para usar nuestra api rest.
-COPY . ./
+COPY src/ src/ ./
 
-#Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor podríamos solo instalar gunicorn y actualizar pip, pero por funcionalidad 
-# preferimos que nuestro contenedor instale todos los requirements.
-#RUN pip install --upgrade pip && pip install --no-cache-dir -r gunicorn 
-RUN pip install --no-cache-dir -r requirements.txt
+#Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
+
+RUN sudo apt-get install python-pip \
+    && pip install --no-cache-dir --upgrade pip \ 
+    && pip install --no-cache-dir -r gunicorn
 
 #Definimos el puerto donde el contenedor va a escuchar
 #Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
