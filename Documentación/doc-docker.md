@@ -42,9 +42,10 @@ Usamos docker ya que nos sirve para crear contenedores de forma ligera, y portab
 
     #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
 
-    RUN sudo apt-get install python-pip \
+    RUN apk add py3-setuptools \
         && pip install --no-cache-dir --upgrade pip \ 
-        && pip install --no-cache-dir -r gunicorn
+        && pip install --no-cache-dir gunicorn
+
 
     #Definimos el puerto donde el contenedor va a escuchar
     #Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
