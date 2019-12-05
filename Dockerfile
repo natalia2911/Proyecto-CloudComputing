@@ -13,9 +13,7 @@ COPY src/ src/ requirements.txt ./
 
 #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
 
-RUN apk add py3-setuptools \
-    && pip install --no-cache-dir --upgrade pip \ 
-    && pip install --no-cache-dir gunicorn
+RUN pip install requirements.txt
 
 #Definimos el puerto donde el contenedor va a escuchar
 #Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
