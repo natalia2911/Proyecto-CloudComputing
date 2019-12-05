@@ -29,37 +29,31 @@ Usamos docker ya que nos sirve para crear contenedores de forma ligera, y portab
     ``` 
     # Seleccionamos la imagen base de alpine, el motivo de la elección ha sido que este sistema ya tiene instalado por defe
     # la versión de python que nosotros usaremos en nuestro proyecto, y también que la imagen que genera este sistema es pequeña.
-
     FROM python:3.6.8-alpine
 
     # En la etiqueta LABEL, mostraremos la información del desarrollador, y el email para el contacto
-
     LABEL NataliaMartir <nataliamartir@correo.ugr.es>
 
     # Establecemos con la etiqueta WORKDIR cual va a ser el directorio de trabajo
-
     WORKDIR /src/
 
     # Copiamos en la imagen todos los archivos necesarios para usar nuestra api rest.
-    
-    COPY . ./
+    COPY src/ src/ ./
 
-    #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor podríamos solo instalar gunicorn y actualizar pip, pero por funcionalidad 
-    # preferimos que nuestro contenedor instale todos los requirements.
-    #RUN pip install --upgrade pip && pip install --no-cache-dir -r gunicorn
+    #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
 
-    RUN pip install --no-cache-dir -r requirements.txt
+    RUN sudo apt-get install python-pip \
+        && pip install --no-cache-dir --upgrade pip \ 
+        && pip install --no-cache-dir -r gunicorn
 
     #Definimos el puerto donde el contenedor va a escuchar
     #Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
     # Fuente: https://lemoncode.net/lemoncode-blog/2019/11/5/hola-docker
-    
     EXPOSE 80
 
     #Ejecutamos gunicorn:
     # Para acceder a la api rest, tendremos que introducirnos en la carpeta src.
     # Usamos --bind para especificar el socket donde va a escuchar, en este caso en el localhost, en el puerto 80.
-    
     CMD cd src && gunicorn students-rest:app --bind 0.0.0.0:80``` 
 
 
@@ -67,8 +61,8 @@ Vamos a explicar cada uno de los elementos usados:
 
 * **FROM**: indica la imagen que vamos a usar en nuestro contenedor, en este caso hemos elegido la de Python en la versión 3.6.8 que es la que testea nuestro proyecto, con alpine, ya que es un sistema muy liguero y genera unas imagenes muy pequeñas.
 * **LABEL**: Mostramos la información del desarrollador, tanto el nombre como un correo de conctato.
-* **COPY**: Se copia todo el contenido de la aplicación
-* **RUN**: Instalamos las dependencias , como indicamos en el propio fichero de docker, podríamos haber ejecutado, solo las dependecias necesarias, hemos decidido implemenatrlas por funcionalidad.
+* **COPY**: Se copia lo necesario para que funcione la aplicación
+* **RUN**: Instalamos lo que necesita nuestra aplicación para funcionar.
 * **EXPOSE**: Definimos el puerto donde va a escuchar el contenedor, en este caso es el puerto 80, que por defecto es el puerto del protocolo HTTP, en este caso no lo hemos introducido en una variable de entorno debido a que este puerto es un puerto común y por defecto, pero si que podríamos introducirlo en una variable de entorno.
 * **CMD**: Ejecutamos gunicorn, para que arranque la api, Para acceder a la api rest, tendremos que introducirnos en la carpeta src. Usamos --bind para especificar el socket donde va a escuchar, en este caso en el localhost, en el puerto 80.
 
