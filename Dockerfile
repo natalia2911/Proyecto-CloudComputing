@@ -26,4 +26,4 @@ EXPOSE 80
 #Ejecutamos gunicorn:
 # Para acceder a la api rest, tendremos que introducirnos en la carpeta src.
 # Usamos --bind para especificar el socket donde va a escuchar, en este caso en el localhost, en el puerto 80.
-CMD cd src && gunicorn students-rest:app --bind 0.0.0.0:80
+CMD gunicorn students-rest:app --bind 0.0.0.0:80
