@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, abort
 from Students import Students
 from mongo_db import MongoDataBase
+import os
 import pymongo
 
 # Código de error:
@@ -9,7 +10,7 @@ import pymongo
 #404, no encontrado.
 #405, método no permitido.
 
-db = MongoDataBase(database='ListaEstudiantes',collection='Estudiantes')
+db = MongoDataBase(url=os.environ['DB_BD'],database='ListaEstudiantes',collection='Estudiantes')
 
 app = Flask(__name__)
 

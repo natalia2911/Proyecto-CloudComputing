@@ -2,9 +2,9 @@ from mongo_db import MongoDataBase
 from EnrolledStudentsList import EnrolledStudentsList
 
 import pymongo
+import os
 
-
-db = MongoDataBase(database='ListaEstudiantes',collection='Estudiantes')
+db = MongoDataBase(url=os.environ['DB_BD'],database='ListaEstudiantes',collection='Estudiantes')
 
 class Students:
     def __init__(self, name, dni, curso, asignaturas):

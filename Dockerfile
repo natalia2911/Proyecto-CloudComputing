@@ -2,6 +2,8 @@
 # la versión de python que nosotros usaremos en nuestro proyecto, y también que la imagen que genera este sistema es pequeña.
 FROM python:3.6.8-alpine
 
+#Variables de entorno: para la base de datos
+ENV DB_BD ${DB_BD}
 # En la etiqueta LABEL, mostraremos la información del desarrollador, y el email para el contacto
 LABEL NataliaMartir <nataliamartir@correo.ugr.es>
 
