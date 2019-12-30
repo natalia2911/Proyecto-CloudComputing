@@ -17,8 +17,21 @@ def test_status():
 
 def test_InfoStudent():
 	response = requests.get(url+'/student/')
-	assert response.json()['status']=="Estamos dentro de la información de los alumnos"
+	assert response.json()['status']=="Estamos dentro de la lista de los alumnos"
 
 def test_SubjectStudent():
 	response = requests.get(url+'/student/subject/')
-	assert response.json()['status']=="Estamos dentro de la información de las asignaturas"
+	assert response.json()['status']=="Estamos dentro de la informacion de las asignaturas"
+
+def test_InfoStudentName():
+	response = requests.get(url+'/student/name/')
+	assert response.json()['status']=="Estamos buscando por nombre"
+
+def test_InfoStudentDNI():
+	response = requests.get(url+'/student/dni/')
+	assert response.json()['status']=="Estamos buscando por dni"
+
+def test_InfoStudentCurso():
+	response = requests.get(url+'/student/curso/')
+	assert response.json()['status']=="Estamos buscando por curso"
+

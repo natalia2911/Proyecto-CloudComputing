@@ -4,23 +4,16 @@ sys.path.append('../src/')
 sys.path.append('src')
 
 from Students import Students
-from SubjectList import SubjectList
-from EnrolledStudentsList import EnrolledStudentsList
-
-result = "Alumno: Natalia\n\nDNI: 15520052C\n\nCurso: Primero\n\n"
-result2= "Alumno: Natalia\n\nDNI: 15520052C\n\nLista de asignaturas: CAL IV IA SCD TID CC PDOO ALG FIS TDD"
-
-enrolledstudents_list = EnrolledStudentsList()
-subject_list = SubjectList()
 
 def test_failed_student():
-    failed_student = "Pepe"
+    failed_student = "Luis"
     dni = "15520052C"
     course = "Primero"
+    asignaturas = 'CAL,IV,TID'
+    result = 'None'
 
-    with pytest.raises(ValueError):
-        estudiante = Students(failed_student, dni, course, enrolledstudents_list)
-        assert estudiante.get_info_student() == result
+    estudiante = Students(failed_student, dni, course, asignaturas)
+    assert estudiante.get_info_student_name(failed_student) != result
 
 def test_failed_dni():
     student = "Natalia"
@@ -32,19 +25,25 @@ def test_failed_dni():
 
     assert numero_dni != n_in_dni
 
-def test_failed_course():
-    student = "Natalia"
-    dni = "15520052C"
-    failed_course = "Segundo"
-
-    estudiante = Students(student, dni, failed_course, enrolledstudents_list)
-    assert estudiante.get_info_student() != result
-
-def test_subjects():
-    student = "Natalia"
-    dni = "15520052C"
+def test_dni():
+    name = "Pedro"
+    dni = "15520053C"
     course = "Primero"
-    estudiante = Students(student, dni, course, enrolledstudents_list)
-    assert estudiante.get_info_subjects != result2
+    asignaturas = 'CAL,IV,TID'
+    result = 'None'
+
+    estudiante = Students(name, dni, course, asignaturas)
+    assert estudiante.get_info_student_dni(dni) != result
+
+def test_failed_course():
+    name = "Pedro"
+    dni = "15520053C"
+    course = "Segundo"
+    asignaturas = 'CAL,IV,TID'
+    result = 'None'
+
+
+    estudiante = Students(name, dni, course, asignaturas)
+    assert estudiante.get_info_student_curso(course) != result
 
 
