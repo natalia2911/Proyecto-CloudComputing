@@ -20,7 +20,7 @@ URI_CONNECTION = "mongodb://" + MONGODB_HOST + ":" + MONGODB_PORT +  "/"
 class MongoDataBase:
     def __init__(self,database,collection):
         # PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
-        self.mongoClient = pymongo.MongoClient('mongodb://login:pwd@localhost:27017/')
+        self.mongoClient = pymongo.MongoClient('mongodb://localhost:27017/')
         # PASO 2: Conexión a la base de datos
         self.db = self.mongoClient[database]
         # PASO 3: Obtenemos una coleccion para trabajar con ella
