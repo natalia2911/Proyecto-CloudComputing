@@ -9,7 +9,7 @@ LABEL NataliaMartir <nataliamartir@correo.ugr.es>
 WORKDIR /src/
 
 # Copiamos en la imagen todos los archivos necesarios para usar nuestra api rest.
-COPY src/ src/ requirements.txt ./
+COPY src/ requirements.txt ./
 
 #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
 
