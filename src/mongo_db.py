@@ -1,5 +1,4 @@
 import pymongo
-import os
 from EnrolledStudentsList import EnrolledStudentsList
 from bson.objectid import ObjectId
 
@@ -14,7 +13,7 @@ estudiantes = {
 class MongoDataBase:
     def __init__(self,database,collection):
         # PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
-        self.mongoClient = pymongo.MongoClient(os.environ['mongo://localhost:27017'])
+        self.mongoClient = pymongo.MongoClient('mongo://localhost:27017')
         # PASO 2: Conexión a la base de datos
         self.db = self.mongoClient[database]
         # PASO 3: Obtenemos una coleccion para trabajar con ella
