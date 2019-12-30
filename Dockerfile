@@ -20,6 +20,7 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 # Fuente: https://lemoncode.net/lemoncode-blog/2019/11/5/hola-docker
 EXPOSE 80
 
+
 #Ejecutamos gunicorn:
 # Para acceder a la api rest, tendremos que introducirnos en la carpeta src.
 # Usamos --bind para especificar el socket donde va a escuchar, en este caso en el localhost, en el puerto 80.
