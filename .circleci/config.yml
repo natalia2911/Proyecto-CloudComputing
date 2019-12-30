@@ -8,14 +8,11 @@ jobs:
       - image: mongo:3.6.3
 
         environment:
-          -MONGODB_USERNAME: "myrootuser"
-          -MONGODB_PASSWORD: "mypassword"
+          MONGO_URL: mongodb://localhost:27017
+  
 
     steps:
       - checkout
-      - run:
-          name: Database Setup
-          command: "mongodb && mongo --eval 'db.createUser({ user: 'myrootuser', pwd: 'mypassword', roles: [ { role: 'userAdminAnyDatabase', db: 'admin' } ] })"
       - run:
           # Instala las dependecias
           name: Dependencias
