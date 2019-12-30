@@ -1,55 +1,73 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort
 from Students import Students
-from SubjectList import SubjectList
-from EnrolledStudentsList import EnrolledStudentsList
+from mongo_db import MongoDataBase
+import pymongo
 
-enrolledstudents_list = EnrolledStudentsList()
-subject_list = SubjectList()
+# Código de error:
+#401, no autorizado.
+#403, prohibido.
+#404, no encontrado.
+#405, método no permitido.
+
+db = MongoDataBase(database='ListaEstudiantes',collection='Estudiantes')
 
 app = Flask(__name__)
 
 @app.route('/', methods = ['GET'])
 def inicio():
 	return jsonify(status="Ok")
+    
+@app.route('/bloqueado')
+def bloqueado():
+    return abort(401)
 
 @app.route('/status',  methods = ['GET'])
 def status():
 	return jsonify(status="OK")
 
-@app.route('/student/', methods = ['GET'])
-def InicioStudent():
-	return jsonify(status="Estamos dentro de la información de los alumnos")
+@app.route('/student/',  methods = ['GET'])
+def InicioEstudiantes():
+    salida = db.getAll()
+    if salida == 'None':
+        salida = abort(404)
+    return jsonify(status="Estamos dentro de la lista de los alumnos", ListadeAlumnos=salida)
 
 @app.route('/student/subject/',  methods = ['GET'])
 def InicioAsignaturas():
-	return jsonify(status="Estamos dentro de la información de las asignaturas")
+	return jsonify(status="Estamos dentro de la informacion de las asignaturas")
 
-@app.route('/student/<student>/<dni>/<curso>', methods = ['GET'])
-def InfoStudent(student,dni,curso):
-    estudiante = Students(student, dni, curso, enrolledstudents_list)
-    n = len(enrolledstudents_list.name)
-    salida = "El estudiante no aparece en nuestra lista de estudiantes"
-    resultado = "No hay datos"
-    for i in range(n):
-        if(estudiante.name == enrolledstudents_list.name[i]):
-            if(estudiante.course == enrolledstudents_list.curso[i] and estudiante.dni == enrolledstudents_list.dni[i]):
-                salida = estudiante.get_info_student()
-                resultado = "Este alumno si esta en nuestra base de datos"
-    return jsonify(InformacionSobreElAlumno=salida, Salida=resultado )
+@app.route('/student/name/<name>/', methods = ['GET'])
+def InfoStudentName(name):
+    salida = db.getStudentName(name)
+    if salida == 'null':
+        salida = abort(404)
+    return jsonify(status="Estamos buscando por nombre",InformacionSobreElAlumno = salida)
 
-@app.route('/student/subjects/<student>/<dni>/<curso>', methods = ['GET'])
-def InfoSubjectStudent(student,dni,curso):
-    estudiante = Students(student, dni, curso, enrolledstudents_list)
-    n = len(enrolledstudents_list.name)
-    salida = "El estudiante no aparece en nuestra lista de estudiantes, por lo tanto no tiene asignaturas asociadas"
-    resultado = "No hay datos"
-    for i in range(n):
-        if(estudiante.name == enrolledstudents_list.name[i]):
-            if(estudiante.course == enrolledstudents_list.curso[i] and estudiante.dni == enrolledstudents_list.dni[i]):
-                salida = estudiante.get_info_subject()
+@app.route('/student/dni/<dni>/', methods = ['GET'])
+def InfoStudentDNI(dni):
+    salida = db.getStudentDNI(dni) 
+    if salida == 'null':
+        salida = abort(404)
+    return jsonify(status="Estamos buscando por dni",InformacionSobreElAlumno = salida)
 
-                resultado = "Este alumno si esta en nuestra base de datos"
-    return jsonify(InformacionSobreElAlumno=salida, Salida=resultado )
+@app.route('/student/curso/<curso>/', methods = ['GET'])
+def InfoStudentCurso(curso):
+    salida = db.getStudentCurso(curso)
+    if salida == 'null':
+        salida = abort(404)
+    return jsonify(status="Estamos buscando por curso",InformacionSobreElAlumno = salida)
 
-if __name__ == '__main__':
-     app.run(port='5000')
+@app.route('/student/name/', methods = ['GET'])
+def InfoStudentName_info():
+    return jsonify(status="Estamos buscando por nombre")
+
+@app.route('/student/dni/', methods = ['GET'])
+def InfoStudentDNI_info():
+    return jsonify(status="Estamos buscando por dni")
+
+@app.route('/student/curso/', methods = ['GET'])
+def InfoStudentCurso_info():
+    return jsonify(status="Estamos buscando por curso")
+
+if __name__ == "__main__":
+    app.run(port='5000')
