@@ -1,6 +1,9 @@
 # Lenguaje utilizado
 language: python
 
+services:
+  - mongodb
+
 # Para que nos ejecute los test de python en la versión correcta,
 # aquí también podríamos probar con otras versiones.
 python:
