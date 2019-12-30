@@ -6,7 +6,7 @@ jobs:
       # será 3.6.8 que es la que estamos utilizando para el desarrollo.
       - image: circleci/python:3.6.8
         environment:
-          TEST_DATABASE_URL: ${DB_BD}
+          TEST_DATABASE_URL: echo ${DB_BD}
 
     steps:
       - checkout
