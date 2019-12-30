@@ -5,11 +5,17 @@ jobs:
       # Especificamos la versión de lenguaje que vamos a utilizar, en este caso 
       # será 3.6.8 que es la que estamos utilizando para el desarrollo.
       - image: circleci/python:3.6.8
+      - image: mongo:3.6.3
+
         environment:
-          TEST_DATABASE_URL: echo ${DB_BD}
+          -MONGODB_USERNAME: "myrootuser"
+          -MONGODB_PASSWORD: "mypassword"
 
     steps:
       - checkout
+      - run:
+          name: Database Setup
+          command: "mongodb && mongo --eval 'db.createUser({ user: 'myrootuser', pwd: 'mypassword', roles: [ { role: 'userAdminAnyDatabase', db: 'admin' } ] })"
       - run:
           # Instala las dependecias
           name: Dependencias
