@@ -10,7 +10,7 @@ estudiantes = {
     EnrolledStudentsList('Laura','15520056C','Quinto','IA,CC'),
 }
 
-MONGODB_HOST = '192.168.0.169'
+MONGODB_HOST = 'localhost'
 MONGODB_PORT = '27017'
 MONGODB_TIMEOUT = 1000
 
@@ -20,7 +20,7 @@ URI_CONNECTION = "mongodb://" + MONGODB_HOST + ":" + MONGODB_PORT +  "/"
 class MongoDataBase:
     def __init__(self,database,collection):
         # PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
-        self.mongoClient = pymongo.MongoClient(URI_CONNECTION)
+        self.mongoClient = pymongo.MongoClient('mongodb://login:pwd@localhost:27017/')
         # PASO 2: Conexión a la base de datos
         self.db = self.mongoClient[database]
         # PASO 3: Obtenemos una coleccion para trabajar con ella
