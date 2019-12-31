@@ -16,7 +16,7 @@ COPY src/ requirements.txt ./
 #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
 
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt \
-    pip install --no-cache-dir dnspython \
+
 
 
 #Definimos el puerto donde el contenedor va a escuchar
