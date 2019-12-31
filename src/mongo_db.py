@@ -10,7 +10,6 @@ estudiantes = {
     EnrolledStudentsList('Laura','15520056C','Quinto','IA,CC'),
 }
 
-
 class MongoDataBase:
     def __init__(self,url,database,collection):
         # PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
@@ -62,5 +61,4 @@ class MongoDataBase:
     def eliminaDNI(self,dni):
         self.collection.remove({"dni":dni})
         return "El alumno ha sido borrado"
-
 

@@ -15,7 +15,9 @@ COPY src/ requirements.txt ./
 
 #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
 
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt \
+    python3 -m pip install --no-cache-dir dnspython \
+    pymongo
 
 #Definimos el puerto donde el contenedor va a escuchar
 #Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
