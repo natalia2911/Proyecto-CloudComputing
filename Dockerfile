@@ -17,7 +17,7 @@ COPY src/ requirements.txt ./
 
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt \
     pip install --no-cache-dir dnspython \
-    pymongo
+
 
 #Definimos el puerto donde el contenedor va a escuchar
 #Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
