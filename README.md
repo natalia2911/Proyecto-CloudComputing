@@ -62,7 +62,7 @@ buildtool: tasks.py
 
 https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/arquitectura_capas.md)
 
-# Uso de contenedores
+## Uso de contenedores
 
 Contenedor: https://hub.docker.com/r/natalia2911/proyecto-cloudcomputing
 
@@ -103,7 +103,7 @@ Para almacenar nuestros datos, como describimos en la parte de la arquitectura, 
 
 [Documentación sobre la base de datos](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/basededatos.md)
 
-# Prestaciones
+## Prestaciones
 
 Prestaciones: prestaciones_test.yml
 
