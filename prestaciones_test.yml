@@ -1,0 +1,17 @@
+#Fichero de medicion de prestaciones con Taurus:
+execution:
+  - concurrency: 10 # Numero de usuarios que se conectan
+    ramp-up: 10s    # Tiempo en el que los usuarios se conectan
+    hold-for: 50s   # Tiempo que el usuario tiene abierta la conexión
+    scenario: students-rest  # Nombre del escenario, en nuestro caso de la APIREST.
+
+# Escenarios
+scenarios:
+  students-rest:
+    requests:
+    - url: http://localhost:8080/student
+      method: GET
+    - url: http://localhost:8080/bloqueado
+      method: GET
+    - url: http://localhost:8080/student/name/Pedro
+      method: GET
