@@ -30,18 +30,15 @@ Seleccionamos que nos haga el Deploy, de forma automática.
 # Ejemplos:
 * https://students-rest.herokuapp.com/ --> Devuelve {"status":"Ok"}
 
-* https://students-rest.herokuapp.com/student/ --> Devuelve {"status":"Estamos dentro de la informaci\u00f3n de los alumnos"}
+* https://students-rest.herokuapp.com/student/ --> Devuelve una lista con el contenido de todos los alumnos.
 
-* http://students-rest.herokuapp.com/student/subject/ --> {"status":"Estamos dentro de la informaci\u00f3n de las asignaturas"}
+* http://students-rest.herokuapp.com/student/subject/ --> {"status":"Estamos dentro de la informacion de las asignaturas"}
 
-* http://students-rest.herokuapp.com/student/subjects/Pedro/15520052C/Primero --> {"InformacionSobreElAlumno":"Alumno:Pedro\n\nDNI: 15520052C\n\nCurso: Primero\n\nLista de asignaturas: CAL,IV,TID","Salida":"Este alumno si esta en nuestra base de datos"}
+* http://students-rest.herokuapp.com/student/subjects/name/Pedro --> {"InformacionSobreElAlumno":"\n\nPedro - 15520052C - Primero - CAL,IV,TID","status":"Estamos buscando por nombre"}
 
-* https://students-rest.herokuapp.com/student/Pedro/15520052C/Primero --> {"InformacionSobreElAlumno":"Alumno: Pedro\n\nDNI: 15520052C\n\nCurso: Primero\n\n","Salida":"Este alumno si esta en nuestra base de datos"}
 
 ---
 
 **Casos de errores:**
 
-* https://students-rest.herokuapp.com/student/Pedro/15520052C/Primeroo --> {"InformacionSobreElAlumno":"El estudiante no aparece en nuestra lista de estudiantes","Salida":"No hay datos"}
-
-* https://students-rest.herokuapp.com/student/subjects/Pedro/15520052C/Primeroo --> {"InformacionSobreElAlumno":"El estudiante no aparece en nuestra lista de estudiantes, por lo tanto no tiene asignaturas asociadas","Salida":"No hay datos"}
+* http://students-rest.herokuapp.com/bloqueado/ --> HTTP 401.

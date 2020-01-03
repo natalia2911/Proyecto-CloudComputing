@@ -22,10 +22,6 @@ Nuestro proyecto es una aplicación encargada de gestionar mediante un calendari
 
 [Información más detallada sobre el proyecto](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentación/DescripcionProyecto.md)
 
---- 
-
-Nuestro proyecto se va a basar en una arquitectura de [microservicios](https://medium.com/@goodrebels/microservicios-ventajas-y-contras-de-la-arquitectura-descentralizada-a3b7fc814422). Cada uno de estos microservicios será independiente.
-
 
 [Información sobre los microservicios](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentación/microservicios.md)
 
@@ -56,25 +52,7 @@ Nuestro proyecto se va a basar en una arquitectura de [microservicios](https://m
 
 ## Integración continua
 
-Para la implementación de la integración continua utilizaremos dos servicios diferentes.
-
-- **Travis-CI**: lo usamos para testear los microservicios descritos con anterioridad de forma sencilla, ya que este sistema nos permite conectar nuestro repositorio y con cada modificación que hagamos nos ejecute los test realizados, de tal forma que nos evitemos que se introduzcan errores no deseados y todo este completamente testeado en todo momento. Destacamos que estamos desarrollando nuestro proyecto en la versión **3.6.8** debido a que es la versión que usamos en local para el desarrollo, pero también probaremos con la versión *3.7* (Versión estable de python) y la *3.8*(Versión en desarrollo), todo sobre el sistema operativo Linux (Ubuntu 18)
-
-- **Circle-CI**: usamos circle-ci como alternativa de sistema de integración continua, debido a su facilidad de uso, para ello tenemos el archivo de configuración [**.circleci/config.yml**](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/.circleci/config.yml)
-    - En el usamos la versión 3.6.8, que es la versión con la que estamos desarrollando el proyecto en local. 
-
-`Tenemos que destacar que parainstalar y testar las clases deberemos instalar las dependecias mediante los requirements.txt (pip install -r requirements.txt)`
-
-Por otro lado como **herramienta de construcción** usaremos *[tasks.py](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/tasks.py)* de *Invoke*.
-
-- Esta herramientas es usada para que todas las tareas se ejecuten de forma automática.
-
-- Las diferentes tareas que ejecuta son:
-    - La tarea **build** para instalar las dependencias.
-    - La tarea **test** para que ejecute los test.
-    - La tarea **codecov** para que envie los resultados al test de cobertura.
-
-Tenemos que destacar que **Invoke** no será una dependencia de nuestro proyecto ya que lo usaremos como herramienta de construcción. 
+Para la implementación de la integración continua utilizaremos dos servicios diferentes. **Travis-CI** y **Circle-CI**
 
 buildtool: tasks.py
 
@@ -82,10 +60,7 @@ buildtool: tasks.py
 
 ## Arquitectura por capas
 
-Hemos decidido implementar uno de los microservicios descritos, en este caso el de **Gestión de Alumnos**
-Tenemos una arquitectura por capas, ya que la hemos definido de esta forma:
-- **Capa inferior**: donde tenemos la clase **Students.py** con su correspondiente test unitario **test_students.py** 
-- **Capa superior**: donde tenemos la API REST del microservicio de gestión de alumnos en el fichero **students-rest.py** con su test de cobertura **test_students_rest.py**
+https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/arquitectura_capas.md)
 
 # Uso de contenedores
 
@@ -111,6 +86,35 @@ He elegido esta plataforma debido a que: es gratis, permite tanto la integració
 El despliege de la aplicación esta en esta url: https://students-rest.herokuapp.com/
 
 [Documentación Heroku](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/doc-heroku.md)
+
+## Despliegue del microservicio
+
+Para desplegar el microservicio utilizaremos la herramienta de construcción `task.py` con invoke.
+
+* Instalar dependencias: `invoke build`
+* Ejecutar los test: `invoke test`
+* Ejecutar test de cobertura: `invoke codevoc`
+* Iniciar microservicio `invoke run -w "Numero de workers"`
+* Parar el microservicio `invoke stop`
+
+## Almacenamiento de los datos
+
+Para almacenar nuestros datos, como describimos en la parte de la arquitectura, usamos **MongoDB** más concretamente **Mongo Altas**, explicaremos con más detalle en la documentación como ha sido el proceso.
+
+[Documentación sobre la base de datos](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/basededatos.md)
+
+# Prestaciones
+
+Prestaciones: prestaciones_test.yml
+
+En este caso hemos evaluado las prestaciones del microservicio *Students*.
+Para proceder a evaluar las prestaciones del mismo hemos usado [Taurus](https://gettaurus.org/).
+Se quería obtener un rendimiento de 1000 peticiones/s con 10 usuarios, pero el resultado que se ha obtenido ha sido de 
+
+Para poder evaluar las prestaciones ejecutamos el comando `bzt prestaciones_test.yml -report`
+
+[Documentación sobre las prestaciones](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/prestaciones.md)
+
 ## Licencia
 ---
 Este proyecto tiene la licencia ***GNU General Public License v3.0*** debido a que es una de las licencias con más permisividad en el ámbito de estudiar, compartir o modificar el software.

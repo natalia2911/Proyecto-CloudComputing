@@ -31,6 +31,8 @@ Usamos docker ya que nos sirve para crear contenedores de forma ligera, y portab
     # la versión de python que nosotros usaremos en nuestro proyecto, y también que la imagen que genera este sistema es pequeña.
     FROM python:3.6.8-alpine
 
+    #Variables de entorno: para la base de datos
+    ENV DB_BD ${DB_BD}
     # En la etiqueta LABEL, mostraremos la información del desarrollador, y el email para el contacto
     LABEL NataliaMartir <nataliamartir@correo.ugr.es>
 
@@ -38,21 +40,23 @@ Usamos docker ya que nos sirve para crear contenedores de forma ligera, y portab
     WORKDIR /src/
 
     # Copiamos en la imagen todos los archivos necesarios para usar nuestra api rest.
-    COPY src/ src/ requirements.txt ./
+    COPY src/ requirements.txt ./
 
     #Con el comando run queremos instalar lo necesario para que se pueda crear el contenedor instalamos gunicorn y actualizar pip
 
-    RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+    RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt 
 
     #Definimos el puerto donde el contenedor va a escuchar
-    #Usamos el puerto 80, ya que es el puerto del protocolo http por defecto.
+    #Usamos el puerto 80, ya que es el puerto del protocolo http por    defecto.
     # Fuente: https://lemoncode.net/lemoncode-blog/2019/11/5/hola-docker
     EXPOSE 80
 
+
     #Ejecutamos gunicorn:
-    # Para acceder a la api rest, tendremos que introducirnos en la carpeta src.    
+    # Para acceder a la api rest, tendremos que introducirnos en la carpeta src.
     # Usamos --bind para especificar el socket donde va a escuchar, en este caso en el localhost, en el puerto 80.
-    CMD gunicorn students-rest:app --bind 0.0.0.0:80``` 
+    CMD gunicorn students-rest:app --bind 0.0.0.0:80
+``` 
 
 
 Vamos a explicar cada uno de los elementos usados:
@@ -63,6 +67,7 @@ Vamos a explicar cada uno de los elementos usados:
 * **RUN**: Instalamos lo que necesita nuestra aplicación para funcionar.
 * **EXPOSE**: Definimos el puerto donde va a escuchar el contenedor, en este caso es el puerto 80, que por defecto es el puerto del protocolo HTTP, en este caso no lo hemos introducido en una variable de entorno debido a que este puerto es un puerto común y por defecto, pero si que podríamos introducirlo en una variable de entorno.
 * **CMD**: Ejecutamos gunicorn, para que arranque la api, Para acceder a la api rest, tendremos que introducirnos en la carpeta src. Usamos --bind para especificar el socket donde va a escuchar, en este caso en el localhost, en el puerto 80.
+* **ENV**: para definir variables de entorno.
 
 Para construir la imagen:
 
