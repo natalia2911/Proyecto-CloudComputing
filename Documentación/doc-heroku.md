@@ -2,6 +2,8 @@
 
 Docker:  https://students-rest.herokuapp.com/
 
+He elegido esta plataforma debido a que: es gratis, permite tanto la integración con github, como con travis, y sobre todo por que es fácil de usar.
+
 Para el despliegue en Heroku, hemos creado el archivo `heroku.yml` el cual servirá para que Heroku cree la imagen a partir del Dockerfile.
 
 ```

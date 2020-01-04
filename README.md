@@ -68,10 +68,6 @@ Contenedor: https://hub.docker.com/r/natalia2911/proyecto-cloudcomputing
 
 Hemos creado la imagen de nuestro contenedor apartir del [Dockerfile](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Dockerfile)
 
-Como podemos ver, la imagen la hemos creado en [DockerHub](https://hub.docker.com/) 
-
-Como parte adicional también hemos creado una imagen de nuestro contenedor en [Zeit](https://zeit.co/dashboard)
-
 Imagen del contenedor de Zeit: https://proyecto-cloudcomputing.nataliamartir.now.sh/
 
 [Documentación adiccional Zeit](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/doc-zeit.md)
@@ -80,8 +76,6 @@ Imagen del contenedor de Zeit: https://proyecto-cloudcomputing.nataliamartir.now
 ## Depliegue de un PaaS
 
 Para que nuestro servicio comience a funcionar, hemos elegido para desplegar nuestra aplicación Heroku.
-
-He elegido esta plataforma debido a que: es gratis, permite tanto la integración con github, como con travis, y sobre todo por que es fácil de usar.
 
 El despliege de la aplicación esta en esta url: https://students-rest.herokuapp.com/
 
@@ -96,6 +90,7 @@ Para desplegar el microservicio utilizaremos la herramienta de construcción `ta
 * Ejecutar test de cobertura: `invoke codevoc`
 * Iniciar microservicio `invoke run -w "Numero de workers"`
 * Parar el microservicio `invoke stop`
+* Construir la imagen de docker: `invoke docker`
 
 ## Almacenamiento de los datos
 
@@ -114,6 +109,12 @@ Se quería obtener un rendimiento de 1000 peticiones/s con 10 usuarios, pero el 
 Para poder evaluar las prestaciones ejecutamos el comando `bzt prestaciones_test.yml -report`
 
 [Documentación sobre las prestaciones](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/prestaciones.md)
+
+## Próximamente ...
+
+Estamos desarrollando el otro microservicio, el cúal integraremos también con la base de datos. 
+
+Este se encontrará en el fichero: `Examns.py` con su correspondiente APIREST `examns-rest.py`
 
 ## Licencia
 ---
