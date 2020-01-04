@@ -35,3 +35,8 @@ def run(n,workers=4):
 @task
 def stop(n):
     n.run("pkill gunicorn")
+
+#Tarea para hacer de forma automatica la contrucción de la imagen.
+@task
+def docker(n):
+    n.run("docker build -t natalia2911/proyecto-cloudcomputing .")
