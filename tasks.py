@@ -27,9 +27,9 @@ def codecov(n):
 # y podremos variar el número de workers.
 
 @task
-def run(n,workers=4):
+def run(n,port=8080,thereads=2,workers=10):
     with n.cd('src/'):
-        n.run("gunicorn students-rest:app --threads=2 -w "+str(workers)+"  --bind 0.0.0.0:8080")
+        n.run("gunicorn students-rest:app -t" + str(thereads) + " -w "+str(workers)+"  -b 0.0.0.0:"+str(port)+" &")
 
 # Tarea para parar el microservicio
 @task

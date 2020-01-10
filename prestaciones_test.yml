@@ -8,10 +8,26 @@ execution:
 # Escenarios
 scenarios:
   students-rest:
-    requests:
-    - url: http://localhost:8080/student
-      method: GET
-    - url: http://localhost:8080/bloqueado
-      method: GET
-    - url: http://localhost:8080/student/name/Pedro
-      method: GET
+      requests:
+        - url: http://0.0.0.0:8080/
+          method: GET
+          label: get-student
+          assert:
+          - contains:
+            - "200|404"
+            subject: http-code
+            regexp: true
+
+       # - url: http://0.0.0.0:8080/student/delete/name/Pedro/
+       #   method: DELETE
+       #   label: delete-student
+       #   assert:
+       #   - contains:
+       #     - "405"
+       #     subject: http-code
+       #   headers:
+       #     Content-Type: application/json
+  
+
+
+

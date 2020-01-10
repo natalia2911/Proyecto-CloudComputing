@@ -61,4 +61,12 @@ class MongoDataBase:
     def eliminaDNI(self,dni):
         self.collection.remove({"dni":dni})
         return "El alumno ha sido borrado"
+        
+    def insertarAlumno(self,name,dni,curso,asignaturas):
+        nuevo = EnrolledStudentsList(name,dni,curso,asignaturas)
+        salida = self.collection.insert_one(nuevo.toDBColletion()).inserted_id
+        return salida
+
+
+
 

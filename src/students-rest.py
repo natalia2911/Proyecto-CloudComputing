@@ -70,5 +70,16 @@ def InfoStudentDNI_info():
 def InfoStudentCurso_info():
     return jsonify(status="Estamos buscando por curso")
 
+@app.route('/student/delete/name/<name>/', methods = ['DELETE'])
+def eliminaStudent(name):
+    salida = db.eliminaNombre(name)
+    return jsonify(status="Estamos borrando a un alumno",InformacionSobreElAlumno = salida)
+
+@app.route('/student/insert/<name>/<dni>/<curso>/<asignaturas>/', methods = ['PUT'])
+def insertarEstudiante(name,dni,curso,asignaturas):
+    salida = db.insertarAlumno(name,dni,curso,asignaturas)
+    return jsonify(status="Estamos borrando a un alumno",InformacionSobreElAlumno = salida)
+
+
 if __name__ == "__main__":
     app.run(port='5000')
