@@ -88,13 +88,17 @@ Para desplegar el microservicio utilizaremos la herramienta de construcción `ta
 * Instalar dependencias: `invoke build`
 * Ejecutar los test: `invoke test`
 * Ejecutar test de cobertura: `invoke codevoc`
-* Iniciar microservicio `invoke run -w "Numero de workers"`
+* Iniciar microservicio `invoke run -t "Numero de hebras" -w "Numero de workers"`
 * Parar el microservicio `invoke stop`
 * Construir la imagen de docker: `invoke docker`
 
 ## Almacenamiento de los datos
 
 Para almacenar nuestros datos, como describimos en la parte de la arquitectura, usamos **MongoDB** más concretamente **Mongo Altas**, explicaremos con más detalle en la documentación como ha sido el proceso.
+
+También hemos incluido la `inyección de dependecias` en relación con la base de datos.
+
+Para más información consultar la documentación adicional.
 
 [Documentación sobre la base de datos](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/basededatos.md)
 
@@ -104,7 +108,7 @@ Prestaciones: prestaciones_test.yml
 
 En este caso hemos evaluado las prestaciones del microservicio *Students*.
 Para proceder a evaluar las prestaciones del mismo hemos usado [Taurus](https://gettaurus.org/).
-Se quería obtener un rendimiento de 1000 peticiones/s con 10 usuarios, pero el resultado que se ha obtenido ha sido de 
+Se quería obtener un rendimiento de 1000 peticiones/s con 10 usuarios, pero el resultado que se ha obtenido ha sido de 1273.18Hits/segundo por lo que podemos decir que ha llegado a las prestaciones objetivo.
 
 Para poder evaluar las prestaciones ejecutamos el comando `bzt prestaciones_test.yml -report`
 

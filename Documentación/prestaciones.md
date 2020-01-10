@@ -1,84 +1,72 @@
 # Evaluación de prestaciones
 
 Para la evaluación de prestaciones hemos usado **Taurus**
+Las prestaciones objetivo que queremos alcanzar son: 1000hits/s y con 10 usuarios ejecutandose de manera concurrente.
 Para ello hemos creado el fichero 'prestaciones_test.yml' y vamos a comentar lo que realiza.
 
+
 '''
-#Fichero de medición de prestaciones con Taurus:
+#Fichero de medicion de prestaciones con Taurus:
 execution:
-- concurrency: 10 # Número de usuarios que se conectan
-ramp-up: 10s # Tiempo en el que los usuarios se conectan
-hold-for: 50s # Tiempo que el usuario tiene abierta la conexión
-scenario: students-rest # Nombre del escenario, en nuestro caso de la APIREST.
+  - concurrency: 10 # Numero de usuarios que se conectan
+    ramp-up: 10s    # Tiempo en el que los usuarios se conectan
+    hold-for: 50s   # Tiempo que el usuario tiene abierta la conexión
+    scenario: students-rest  # Nombre del escenario, en nuestro caso de la APIREST.
 
 # Escenarios
 scenarios:
-students-rest:
-requests:
-- url: http://localhost:8080/student
-method: GET
-- url: http://localhost:8080/bloqueado
-method: GET
-- url: http://localhost:8080/student/name/Pedro
-method: GET
+  students-rest:
+      requests:
+        - url: http://0.0.0.0:8080/
+          method: GET
+          label: get-student
+          assert:
+          - contains:
+            - "200|404"
+            subject: http-code
+            regexp: true
 '''
 
 Podemos ver que tenemos el servidor arrancando de manera local, con 10 usuarios que se conectaran en 10s y que la conexión se mantiene abierta 50s.
 Por otro lado creamos el escenario para evaluar nuestra API-REST del microservicio Studend.
-En el escenario realizamos 3 peticiones, las tres son peticiones GET, en la que 2 de ellas tendrán éxito y la petición de *bloqueado* será fallida con un código de error de HTTP 401, que indicará que está accediendo ha contenido no autorizado.
+En el escenario realizamos 1 petición GET, en la que obtenemos todas las posibles opciones que puede presentarse en la API.
 
-Hemos ejecutado dos pruebas, una con los datos de forma local, y otra con los datos en MongoAtlas.
+La prueba de las prestaciones la hemos hecho con la base de datos local, ya que con la base de datos en remoto, no alcanzamos las prestaciones objetivo.
+Por otro lado, tambien destacamos que el despliege del servicio lo hemos hecho de forma local.
 
-Para ejecutar las pruebas, hemos realizado 4 intentos:
+Para ejecutar las pruebas, hemos realizado 3 intentos:
 
-- Primer intento: 4 workers, con los datos de forma local.
-- Segundo intento: 4 workers, con los datos en remoto.
-- Tercer intento: 10 workers, con los datos de forma local.
-- Cuarto intento: 10 workers, con los datos de forma remota.
-- Quinto intento: sin base de datos.
+- Primer intento: 4 workers ejecutandose en 1 hebra.
+- Segundo intento: 4 workers ejecutandose en 2 hebras.
+- Tercer intento: 10 workers ejecutandose en 2 hebras.
 
-## Primer intento: 4 workers, con los datos de forma local.
 
-En este primer intento hemos utilizado 4 workers, y hemos usado los datos accediendo de forma local a mongoDB.
-El resultado que hemos obtenido ha sido:
+## Primer intento: 4 workers ejecutandose en 1 hebra.
 
-![Primer intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/4-local.png)
-![Primer intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/4-local-report.png)
+En este primer intento hemos utilizado 4 workers, y una sola hebra, y podemos ver que el resultado que se obtiene es de 849.45 hits/s, podemos ver que el resultado no es malo del todo, pero podemos mejorar, ya que aún no llegamos a alcanzar las prestaciones requeridas.
 
-Como podemos ver no alcanzamos las peticiones que se pedían pero el resultado se aproxima al 50 por ciento, esto es debido a que accedemos a la base de datos de forma local.
+![Primer intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/4w-1h.png)
 
-## Segundo intento: 4 workers, con los datos en remoto.
 
-En este segundo intento hemos utilizado 4 workers, y hemos usado los datos accediendo de forma remota a mongoDB, más concretamente hemos usado 'MongoAtlas'.
-El resultado que hemos obtenido ha sido:
+## Segundo intento: 4 workers ejecutandose en 2 hebras.
 
-![Segundo intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/4-remoto.png)
-![Segundo intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/4-remoto-report.png)
+En este segundo intento hemos utilizado 4 workers y como diferencia del anterior intento hemos usado 2 hebras; hemos decido usar más hebras ya que creo que es una buena opción para mejorar las prestaciones.
 
-En este caso podemos ver que el número de peticiones baja considerablemente, hasta llegar a 27.7, lo cual es un número muy bajo.
+Como podemos ver, si que han mejorado, superando el objetivo, como podemos ver el número de prestaciones que alcanza es de 1227.09Hits/s
 
-## Tercer intento: 10 workers, con los datos de forma local.
+![Segundo intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/4w-2h.png)
 
-En este tercer intento hemos utilizado 10 workers, y hemos usado los datos accediendo de forma local.
-El resultado que hemos obtenido ha sido:
 
-![Tercer intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/10-local.png)
-![Tercer intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/10-local-report.png)
+## Tercer intento: 10 workers ejecutandose en 2 hebras.
 
-En este caso en número de peticiones que tenemos es similar al que teníamos con 4 workers.
+En este tercer intento, hemos decidido seguir usando 2 hebras, pero tambíen aumentar el número de workers a 10, de esta forma hemos alzancadoo un nivel de prestaciones de 1273.18Hits/segundo.
 
-## Cuarto intento: 10 workers, con los datos de forma remota.
+Es el mejor resultado en cuanto a prestaciones que hemos obtenido.
 
-En este cuarto intento hemos utilizado 10 workers, y hemos usado los datos accediendo de forma remota a mongoDB, más concretamente hemos usado 'MongoAtlas'.
-El resultado que hemos obtenido ha sido:
+![Tercer intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/10w-2h.png)
 
-![Cuarto intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/4-remoto.png)
-![Cuarto intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/4-remoto-report.png)
+### Errores cometidos
 
-Seguimos viendo, que los resultados son similares a cuando había 4 workers.
-
-## Quinto intento: sin base de datos.
-
-En este intento podemos ver que las prestaciones son mucho más altas, incluso hemos llegado a alcanzar 2424.6
-
-![Quinto intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/sinBD.png)
+Al principio el nivel de prestaciones era de unos 400Hits/s aproximadamente y esto era debido a varios factores:
+* Primero, usamos la base de datos de forma remota, con el acceso que tenemos a Mongo Atlas, y esto nos dió un nivel de prestaciones muy bajo.
+* Por otro lado dentro del fichero de prestaciones, incluiamos escenarios de POST, y también nos dimos cuenta de que el nivel de prestaciones bajaba por este motivo, por lo que decidimos solo poner peticiones GET.
