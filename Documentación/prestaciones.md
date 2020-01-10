@@ -19,7 +19,7 @@ scenarios:
         - url: http://0.0.0.0:8080/
           method: GET
           label: get-student #etiqueta
-          assert: #Las aserciones se adjuntan a elementos de solicitud y se utilizan         # para establecer el estado de falla en la respuesta. El estado            # de falla para la respuesta no es el mismo que el código de               # respuesta para JMeter. 
+          assert: #Las aserciones se adjuntan a elementos de solicitud y se utilizan para establecer el estado de falla en la respuesta. El estado             de falla para la respuesta no es el mismo que el código de               respuesta para JMeter. 
           - contains: #verficiamos que puede estar el error 404
             - "200|404"
             subject: http-code
