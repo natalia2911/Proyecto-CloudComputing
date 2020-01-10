@@ -4,8 +4,7 @@ Para la evaluación de prestaciones hemos usado **Taurus**
 Las prestaciones objetivo que queremos alcanzar son: 1000hits/s y con 10 usuarios ejecutandose de manera concurrente.
 Para ello hemos creado el fichero 'prestaciones_test.yml' y vamos a comentar lo que realiza.
 
-
-'''
+```
 #Fichero de medicion de prestaciones con Taurus:
 execution:
   - concurrency: 10 # Numero de usuarios que se conectan
@@ -25,7 +24,7 @@ scenarios:
             - "200|404"
             subject: http-code
             regexp: true
-'''
+```
 
 Podemos ver que tenemos el servidor arrancando de manera local, con 10 usuarios que se conectaran en 10s y que la conexión se mantiene abierta 50s.
 Por otro lado creamos el escenario para evaluar nuestra API-REST del microservicio Studend.
