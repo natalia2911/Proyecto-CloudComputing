@@ -18,12 +18,12 @@ scenarios:
       requests:
         - url: http://0.0.0.0:8080/
           method: GET
-          label: get-student
-          assert:
-          - contains:
+          label: get-student #etiqueta
+          assert: #Las aserciones se adjuntan a elementos de solicitud y se utilizan         # para establecer el estado de falla en la respuesta. El estado            # de falla para la respuesta no es el mismo que el código de               # respuesta para JMeter. 
+          - contains: #verficiamos que puede estar el error 404
             - "200|404"
             subject: http-code
-            regexp: true
+            regexp: true #Habilitamos que se puedan usar expresiones regulares.
 ```
 
 Podemos ver que tenemos el servidor arrancando de manera local, con 10 usuarios que se conectaran en 10s y que la conexión se mantiene abierta 50s.
