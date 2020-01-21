@@ -27,9 +27,12 @@ def codecov(n):
 # y podremos variar el número de workers.
 
 @task
-def run(n,port=8080,thereads=2,workers=10):
+def run(n,port=8080,thereads=2,workers=10,app="students"):
     with n.cd('src/'):
-        n.run("gunicorn students-rest:app -t" + str(thereads) + " -w "+str(workers)+"  -b 0.0.0.0:"+str(port)+" &")
+        if(app == 'students'):
+            n.run("gunicorn students-rest:app -t" + str(thereads) + " -w "+str(workers)+"  -b 0.0.0.0:"+str(port)+" &")
+        if(app == 'exams'):
+            n.run("gunicorn examns-rest:app -t" + str(thereads) + " -w "+str(workers)+"  -b 0.0.0.0:"+str(port)+" &")
 
 # Tarea para parar el microservicio
 @task
@@ -42,6 +45,3 @@ def stop(n):
 def docker(n, dockerfile="Dockerfile-student"):
     n.run("docker build -f + "+docker+ " -t natalia2911/proyecto-cloudcomputing .")
 
-@task
-def runImageDocker(n)
-    n.run("docker run -it --rm -p 80:"+srt(port)+ "natalia2911/proyecto-cloudcomputing")
