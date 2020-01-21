@@ -1,12 +1,12 @@
 build:
   docker:
-    web: Dockerfile-student
+    web: Students.Dockerfile
 run:
   web: gunicorn students-rest:app --log-file -
 
 build:
   docker:
-    web: Dockerfile-exams
+    web: Examns.Dockerfile
 run:
   web: gunicorn examns-rest:app --log-file -
 # Utilizamos --log-file para indicar el fichero de logs.
