@@ -35,9 +35,7 @@ También debemos crearnos un usuario y una contraseña, para luego poder conecta
 Para la inclusión de MongoDB a nuestro microservicio, hemos tenido que usar 'Pymongo' debido a que hemos utilizado python como lenguaje de nuestro microservicio.
 Por un lado hemos creado la clase 'mongo_db.py' para luego mediante la **inyección de dependencias** incluirla al microservicio.
 
-Para la inyección de dependencias lo que hemos hecho es que inyectamos un objeto de la clase mongo_db.py donde queramos acceder a la base de datos, y le tenemos que pasar, la url, que en este caso accedemos a la variable de entorno `DB_BD`, le pasamos el nombre de `database` en este caso para el microservicio de Students, sería ListaEstudiantes, y tenemos que pasarle el nombre de la `colección`, en este caso sería Estudiantes. Inyectamos las dependencias a la lógica de negocio, en este caso Students.py. Quedaría así:
-
-![Dependencias](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/dependecias.png)
+[Documentación sobre inyección dependencias](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/inyeccion.md)
 
 - Hemos modificado el 'Dockerfile' incluyendo la variable de entorno, también hemos actualizado la imagen en DockerHub.
 

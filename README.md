@@ -88,25 +88,25 @@ Para desplegar el microservicio utilizaremos la herramienta de construcción `ta
 * Instalar dependencias: `invoke build`
 * Ejecutar los test: `invoke test`
 * Ejecutar test de cobertura: `invoke codevoc`
-* Iniciar microservicio `invoke run -t "Numero de hebras" -w "Numero de workers"`
+* Iniciar microservicio `invoke run -p puerto -t "Numero de hebras" -w "Numero de workers --app "students o exams : dependiendo de que microservicio queremos ejecutar."`
 * Parar el microservicio `invoke stop`
-* Construir la imagen de docker: `invoke docker`
+* Construir la imagen de docker: `invoke docker --dockerfile "Nombre del docker que queremos ejecutar`
 
 ## Almacenamiento de los datos
 
 Para almacenar nuestros datos, como describimos en la parte de la arquitectura, usamos **MongoDB** más concretamente **Mongo Altas**, explicaremos con más detalle en la documentación como ha sido el proceso.
 
-También hemos incluido la `inyección de dependecias` en relación con la base de datos.
+También hemos incluido la `inyección de dependecias` en relación con la base de datos, para ello hemos tenido también que separar la lógica de negocio de la base de datos. Podemos consultar como hemos realizado la inyección de dependencias en esta documentación adicional.
 
-Para más información consultar la documentación adicional.
+[Documentación sobre inyección dependencias](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/inyeccion.md)
 
 [Documentación sobre la base de datos](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/basededatos.md)
 
-## Prestaciones
+## Prestaciones 
 
 Prestaciones: prestaciones_test.yml
 
-En este caso hemos evaluado las prestaciones del microservicio *Students*.
+En este caso hemos evaluado las prestaciones del microservicio *Students*. Y como última versión también la de los dos microservicios a la vez.
 Para proceder a evaluar las prestaciones del mismo hemos usado [Taurus](https://gettaurus.org/).
 Se quería obtener un rendimiento de 1000 peticiones/s con 10 usuarios, pero el resultado que se ha obtenido ha sido de 1273.18Hits/segundo por lo que podemos decir que ha llegado a las prestaciones objetivo.
 
@@ -114,11 +114,15 @@ Para poder evaluar las prestaciones ejecutamos el comando `bzt prestaciones_test
 
 [Documentación sobre las prestaciones](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/prestaciones.md)
 
-## Próximamente ...
 
-Estamos desarrollando el otro microservicio, el cúal integraremos también con la base de datos. 
+## Segundo microservicio
+Hemos realizado el desarrollo del segundo microservicio en este caso es el gestor de Examenes.
+Nos encontramos su desarrollo en los ficheros, tanto de la lógica de negocio como de la api rest.
 
-Este se encontrará en el fichero: `Examns.py` con su correspondiente APIREST `examns-rest.py`
+* [Examns.py](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/src/Exams.py)
+* [examns-rest.py](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/src/examns-rest.py)
+
+Está también incluida, la base de datos, cuyo caso es `pymongo` y también seguimos el principio de inyección de dependencias, y el de separar por capas.
 
 ## Licencia
 ---

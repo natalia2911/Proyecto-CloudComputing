@@ -9,6 +9,16 @@ execution:
 scenarios:
   students-rest:
       requests:
+        - url: http://0.0.0.0:5050/
+          method: GET
+          label: get-student
+          assert:
+          - contains:
+            - "200|404"
+            subject: http-code
+            regexp: true
+  examns-rest:
+      requests:
         - url: http://0.0.0.0:8080/
           method: GET
           label: get-student

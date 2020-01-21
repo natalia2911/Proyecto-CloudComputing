@@ -24,6 +24,16 @@ scenarios:
             - "200|404"
             subject: http-code
             regexp: true #Habilitamos que se puedan usar expresiones regulares.
+    examns-rest:
+      requests:
+        - url: http://0.0.0.0:8080/
+          method: GET
+          label: get-student
+          assert:
+          - contains:
+            - "200|404"
+            subject: http-code
+            regexp: true
 ```
 
 Podemos ver que tenemos el servidor arrancando de manera local, con 10 usuarios que se conectaran en 10s y que la conexión se mantiene abierta 50s.
@@ -35,10 +45,10 @@ Por otro lado, tambien destacamos que el despliege del servicio lo hemos hecho d
 
 Para ejecutar las pruebas, hemos realizado 3 intentos:
 
-- Primer intento: 4 workers ejecutandose en 1 hebra.
-- Segundo intento: 4 workers ejecutandose en 2 hebras.
-- Tercer intento: 10 workers ejecutandose en 2 hebras.
-
+- Primer intento: 4 workers ejecutandose en 1 hebra (SOLO 1 MS).
+- Segundo intento: 4 workers ejecutandose en 2 hebras (SOLO 1 MS).
+- Tercer intento: 10 workers ejecutandose en 2 hebras (SOLO 1 MS).
+- Cuarto intento: 10 workers ejecutandose en 2 hebras ejecutando los dos microservicios a la vez.
 
 ## Primer intento: 4 workers ejecutandose en 1 hebra.
 
@@ -63,6 +73,19 @@ En este tercer intento, hemos decidido seguir usando 2 hebras, pero tambíen aum
 Es el mejor resultado en cuanto a prestaciones que hemos obtenido.
 
 ![Tercer intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/10w-2h.png)
+
+
+## Cuarto intento: 10 workers ejecutandose en 2 hebras ejecutando los dos microservicios a la vez.
+
+En este cuarto intento, ya que teníamos desarrollado el 2 microservicio, hemos decidio probar con los dos microservicios a la vez ,hemos decidido seguir usando 2 hebras, pero tambíen aumentar el número de workers a 10, de esta forma hemos alzancadoo un nivel de prestaciones de 1269.18Hits/segundo.
+
+![Cuarto intento](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/p-2MS.png)
+
+## ¿Qué hemos hecho para mejorar las prestaciones?
+
+Principalmente hemos eliminado las peticiones POST, solo hacemos peticiones GET.
+Por otro lado también hemos aumentado el número de workers y el número de hebras, por lo que de esta manera y al ejecutarse en paralelo, las prestaciones también han aumentado.
+Por otro lado, también hemos desarrollado el segundo microservicio, y llega también a un nivel de prestaciones óptimo.
 
 ### Errores cometidos
 
