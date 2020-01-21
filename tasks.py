@@ -39,5 +39,9 @@ def stop(n):
 #Tarea para hacer de forma automatica la contrucción de la imagen.
 
 @task
-def docker(n):
-    n.run("docker build -t natalia2911/proyecto-cloudcomputing .")
+def docker(n, dockerfile="Dockerfile-student"):
+    n.run("docker build -f + "+docker+ " -t natalia2911/proyecto-cloudcomputing .")
+
+@task
+def runImageDocker(n)
+    n.run("docker run -it --rm -p 80:"+srt(port)+ "natalia2911/proyecto-cloudcomputing")

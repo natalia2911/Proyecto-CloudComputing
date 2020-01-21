@@ -3,45 +3,50 @@ import sys
 sys.path.append('../src/')
 sys.path.append('src')
 
-from Exams import Exams
-from SubjectList import SubjectList
+from Exams import Examns
+from ExamnList import ExamnList
 
-result = "Examen de la asignatura: CC\n\nFecha: 01/02/2020\n\nLugar: Sala de usos multiples\n\n"
-
-subject_list = SubjectList()
 
 def test_failed_subject():
-    failed_subject = "STOP"
-    date = "01/02/2020"
-    place = "Sala de usos multiples"
+    failed_subject = "CCC"
+    fecha = "20-01-2020"
+    aula = "Aula01"
+    curso = "Primero"
+    result = 'None'
 
-    with pytest.raises(ValueError):
-        exam = Exams(failed_subject,date,subject_list,place)
-        assert exam.get_subject_exam() == result
+    examen = Examns(failed_subject,fecha,aula,curso)
+    assert examen.get_info_examn(failed_subject) != result
 
-def test_failed_date():
-    subject = "CC"
-    failed_date = "23/23/23"
-    place = "Sala de usos multiples"
-    exam = Exams(subject,failed_date,subject_list,place)
-    with pytest.raises(TypeError) as e:
-        raise TypeError(result)
-        assert str(exam.get_subject_exam()) != result
+def test_failed_fecha():
+    subject = "Calculo"
+    failed_fecha = "20-02-2020"
+    aula = "Aula01"
+    curso = "Primero"
+    result = 'None'
 
-def test_failed_place():
-    subject = "CC"
-    date = "01/02/2020"
-    failed_place = "En mi casa"
+    examen = Examns(subject,failed_fecha,aula,curso)
+    assert examen.get_info_fecha(failed_fecha) != result
 
-    with pytest.raises(TypeError) as e:
-        raise TypeError(result)
-        exam = Exams(subject,date,subject_list,failed_place)
+def test_failed_aula():
+    subject = "Calculo"
+    fecha = "20-01-2020"
+    failed_aula = "Aula044"
+    curso = "Primero"
+    result = 'None'
+
+    examen = Examns(subject,fecha,failed_aula,curso)
+    assert examen.get_info_aula(failed_aula) != result
+
+def test_failed_curso():
+    subject = "Calculo"
+    fecha = "20-01-2020"
+    aula = "Aula01"
+    failed_curso = "asdf"
+    result = 'None'
+
+    examen = Examns(subject,fecha,aula,failed_curso)
+    assert examen.get_info_curso(failed_curso) != result
 
 if __name__ == "__main__":
-    subject = "CC"
-    failed_date = "23/23/23"
-    place = "Sala de usos multiples"
-    exam = Exams(subject,failed_date,subject_list,place)
-    print(exam.get_subject_exam())
-    print(result)
+    pass
 

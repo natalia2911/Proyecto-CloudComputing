@@ -10,9 +10,8 @@ import pymongo
 #404, no encontrado.
 #405, método no permitido.
 
-db = MongoDataBase(url=os.environ['DB_BD'],database='ListaEstudiantes',collection='Estudiantes')
-
 app = Flask(__name__)
+estudiante = Students('Pedro','15520052C','Primero','CAL,IV,TID')
 
 @app.route('/', methods = ['GET'])
 def inicio():
@@ -28,7 +27,7 @@ def status():
 
 @app.route('/student/',  methods = ['GET'])
 def InicioEstudiantes():
-    salida = db.getAll()
+    salida = estudiante.obtenerTodo()
     if salida == 'None':
         salida = abort(404)
     return jsonify(status="Estamos dentro de la lista de los alumnos", ListadeAlumnos=salida)
@@ -39,21 +38,21 @@ def InicioAsignaturas():
 
 @app.route('/student/name/<name>/', methods = ['GET'])
 def InfoStudentName(name):
-    salida = db.getStudentName(name)
+    salida = estudiante.get_info_student_name(name)
     if salida == 'null':
         salida = abort(404)
     return jsonify(status="Estamos buscando por nombre",InformacionSobreElAlumno = salida)
 
 @app.route('/student/dni/<dni>/', methods = ['GET'])
 def InfoStudentDNI(dni):
-    salida = db.getStudentDNI(dni) 
+    salida = estudiante.get_info_student_dni(dni)
     if salida == 'null':
         salida = abort(404)
     return jsonify(status="Estamos buscando por dni",InformacionSobreElAlumno = salida)
 
 @app.route('/student/curso/<curso>/', methods = ['GET'])
 def InfoStudentCurso(curso):
-    salida = db.getStudentCurso(curso)
+    salida = estudiante.get_info_student_curso(curso)
     if salida == 'null':
         salida = abort(404)
     return jsonify(status="Estamos buscando por curso",InformacionSobreElAlumno = salida)
@@ -72,14 +71,8 @@ def InfoStudentCurso_info():
 
 @app.route('/student/delete/name/<name>/', methods = ['DELETE'])
 def eliminaStudent(name):
-    salida = db.eliminaNombre(name)
+    salida = estudiante.eliminarEstudiante(name)
     return jsonify(status="Estamos borrando a un alumno",InformacionSobreElAlumno = salida)
-
-@app.route('/student/insert/<name>/<dni>/<curso>/<asignaturas>/', methods = ['PUT'])
-def insertarEstudiante(name,dni,curso,asignaturas):
-    salida = db.insertarAlumno(name,dni,curso,asignaturas)
-    return jsonify(status="Estamos borrando a un alumno",InformacionSobreElAlumno = salida)
-
 
 if __name__ == "__main__":
     app.run(port='5000')
