@@ -1,6 +1,6 @@
 build:
   docker:
-    web: Students.Dockerfile
+    web: Dockerfile
 run:
   web: gunicorn students-rest:app --log-file -
 
