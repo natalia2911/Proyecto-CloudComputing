@@ -3,6 +3,5 @@ build:
     web: Dockerfile
 run:
   web: gunicorn students-rest:app --log-file -
-
 # Utilizamos --log-file para indicar el fichero de logs.
 
