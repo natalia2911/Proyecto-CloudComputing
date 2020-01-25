@@ -27,7 +27,7 @@ def codecov(n):
 # y podremos variar el número de workers.
 
 @task
-def run(n,port=8080,thereads=2,workers=10,app="students"):
+def run(n,port=80,thereads=2,workers=10,app="students"):
     with n.cd('src/'):
         if(app == 'students'):
             n.run("gunicorn students-rest:app -t" + str(thereads) + " -w "+str(workers)+"  -b 0.0.0.0:"+str(port)+" &")
