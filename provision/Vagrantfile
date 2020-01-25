@@ -1,0 +1,15 @@
+Vagrant.configure("2") do |config|
+
+  # Como imagen utilizaremos el box de Ubuntu 16.04 LTS:
+  config.vm.box = "bento/ubuntu-16.04"
+
+  # Box que vamos a utilizar en la máquina virtual.
+  config.vm.hostname = "proyectocc-local"
+
+  config.vm.network "private_network", ip: "192.168.56.50"
+
+	config.vm.provision :ansible do |ansible|
+		ansible.playbook = "workstation.yml"
+	end
+
+end
