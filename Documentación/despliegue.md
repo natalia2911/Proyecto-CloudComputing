@@ -161,7 +161,7 @@ Nuestro fichero de provisionamiento: actualiza, instala python, pip, git y desca
 ```
 
 ---
-Para el despligue usamos Fabric, con el fichero [Fabfile](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/despliegue/fabfile.yml)
+Para el despligue usamos Fabric, con el fichero [Fabfile](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/despliegue/fabfile.py)
 
 ```
 from fabric.api import *
@@ -214,6 +214,10 @@ Hemos medido tanto las prestaciones de la máquina local, y la remota, y es evid
 
 Como podemos ver en las imágenes, en primer lugar tenemos las prestaciones que se ejecutan de forma remota, 50.25Hits/segundo, prestaciones que no son aceptables, pero las cuales hemos mejorado con la versión en local con 435.29Hits/segundo, de las cuales podemos decir que no son del todo muy buenas, pero que aún así podemos considerarlas como aceptables.
 
+
+![Remoto](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/prestaciones-remoto.png)
+
+![Local](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/img/prestaciones-local.png)
 
 
 ## Referencias
