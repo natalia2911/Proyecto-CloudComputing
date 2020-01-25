@@ -47,11 +47,3 @@ class Examns:
     def eliminarExamen(subject):
         salida = db.eliminaExam(name)
         return salida
-
-if __name__ == "__main__":
-    pass
-
-
-
-
-
