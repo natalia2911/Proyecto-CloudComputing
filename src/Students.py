@@ -48,8 +48,6 @@ class Students:
         return salida
     
 
-if __name__ == "__main__":
-    pass
 
 
 
