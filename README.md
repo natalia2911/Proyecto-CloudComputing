@@ -96,7 +96,7 @@ Para desplegar el microservicio utilizaremos la herramienta de construcción `ta
 
 Para almacenar nuestros datos, como describimos en la parte de la arquitectura, usamos **MongoDB** más concretamente **Mongo Altas**, explicaremos con más detalle en la documentación como ha sido el proceso.
 
-También hemos incluido la `inyección de dependecias` en relación con la base de datos, para ello hemos tenido también que separar la lógica de negocio de la base de datos. Podemos consultar como hemos realizado la inyección de dependencias en esta documentación adicional.
+También hemos incluido la `inyección de dependencias` en relación con la base de datos, para ello hemos tenido también que separar la lógica de negocio de la base de datos. Podemos consultar cómo hemos realizado la inyección de dependencias en esta documentación adicional.
 
 [Documentación sobre inyección dependencias](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/inyeccion.md)
 
@@ -116,13 +116,27 @@ Para poder evaluar las prestaciones ejecutamos el comando `bzt prestaciones_test
 
 
 ## Segundo microservicio
-Hemos realizado el desarrollo del segundo microservicio en este caso es el gestor de Examenes.
+Hemos realizado el desarrollo del segundo microservicio en este caso es el gestor de Exámenes.
 Nos encontramos su desarrollo en los ficheros, tanto de la lógica de negocio como de la api rest.
 
 * [Examns.py](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/src/Exams.py)
 * [examns-rest.py](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/src/examns-rest.py)
 
 Está también incluida, la base de datos, cuyo caso es `pymongo` y también seguimos el principio de inyección de dependencias, y el de separar por capas.
+
+## Provisionamiento y despliegue
+
+DNS del despliege final en remoto: 104.42.214.221 ó proyectocc.westus.cloudapp.azure.com
+
+Hemos realizado el despliegue de los microservicios de nuestro proyecto tanto en local, como en versión remota.
+Para la realización de estas tareas hemos usado:
+
+* `Ansible` para el aprovisionamiento.
+* `Vagrant` para la orquestación de las máquina virtuales.
+* `Fabric` para el despliegue.
+
+Para obtener información adiccional de como hemos realizado dichas tareas: [Documentación adiccional](https://github.com/natalia2911/Proyecto-CloudComputing/blob/master/Documentaci%C3%B3n/despliegue.md)
+
 
 ## Licencia
 ---
