@@ -1,0 +1,26 @@
+- hosts: all
+  become: yes
+
+  tasks:
+
+  - name: Actualizar sistema
+    command: apt update
+
+  - name: Instalar Python
+    apt:
+      pkg: ["python3","python3-pip"]
+      state: present
+
+  - name: Instalar Git
+    command: apt-get install git
+
+  - name: Descargar proyecto
+    git:
+      repo: https://github.com/natalia2911/Proyecto-CloudComputing.git
+      dest: /Proyecto-CloudComputing
+      version: master
+
+
+
+
+
