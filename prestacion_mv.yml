@@ -1,0 +1,29 @@
+#Fichero de medicion de prestaciones con Taurus:
+execution:
+  - concurrency: 10 # Numero de usuarios que se conectan
+    ramp-up: 10s    # Tiempo en el que los usuarios se conectan
+    hold-for: 20s   # Tiempo que el usuario tiene abierta la conexión
+    scenario: students-rest  # Nombre del escenario, en nuestro caso de la APIREST.
+
+# Escenarios
+scenarios:
+  students-rest:
+      requests:
+        - url: http://http://104.42.214.221/:5050/
+          method: GET
+          label: get-student
+          assert:
+          - contains:
+            - "200|404"
+            subject: http-code
+            regexp: true
+  examns-rest:
+      requests:
+        - url: http://http://104.42.214.221/:8080/
+          method: GET
+          label: get-student
+          assert:
+          - contains:
+            - "200|404"
+            subject: http-code
+            regexp: true
